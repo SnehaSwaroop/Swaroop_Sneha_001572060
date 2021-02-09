@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="cc" green="ff" red="ff" type="rgb"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabel1" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblPersonalInfo" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblReportSSN" max="32767" attributes="0"/>
+                                  <Component id="lblReportWeight" max="32767" attributes="0"/>
+                                  <Component id="lblReportHeight" max="32767" attributes="0"/>
+                                  <Component id="lblReportAge" max="32767" attributes="0"/>
+                                  <Component id="lblReportDOB" max="32767" attributes="0"/>
+                                  <Component id="lblReportPhNum" pref="131" max="32767" attributes="0"/>
+                                  <Component id="lblReportLastName" max="32767" attributes="0"/>
+                                  <Component id="lblReportFirstName" min="-2" pref="125" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtReportFirstName" pref="156" max="32767" attributes="0"/>
+                                  <Component id="txtReportLastName" max="32767" attributes="0"/>
+                                  <Component id="txtReportPhNum" max="32767" attributes="0"/>
+                                  <Component id="txtReportDOB" max="32767" attributes="0"/>
+                                  <Component id="txtReportAge" max="32767" attributes="0"/>
+                                  <Component id="txtReportHeight" max="32767" attributes="0"/>
+                                  <Component id="txtReportWeight" max="32767" attributes="0"/>
+                                  <Component id="txtReportSSN" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblReportStreetAdd" min="-2" pref="131" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtReportStreetAddress" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblReportCity" min="-2" pref="131" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtReportCity" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblReportState" min="-2" pref="131" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtReportState" min="-2" pref="156" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblReportZipCode" min="-2" pref="131" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtReportZipCode" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblReportBankInfo" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblReportBankName" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                                          <Component id="lblReportRoutingNum" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                                          <Component id="lblReportAccNum" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                                          <Component id="lblReportSavingBal" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtReportRoutingNum" min="-2" pref="164" max="-2" attributes="0"/>
+                                                  <Component id="txtReportBankName" min="-2" pref="164" max="-2" attributes="0"/>
+                                                  <Component id="txtReportAccountNum" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="txtReportSavingBal" min="-2" pref="164" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="lblReportRecordNum" max="32767" attributes="0"/>
+                                          <Component id="lblReportCheckingBal" alignment="1" pref="122" max="32767" attributes="0"/>
+                                          <Component id="lblReportAllergy1" max="32767" attributes="0"/>
+                                          <Component id="lblReportAllergy3" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblReportAllergy2" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtReportAllergy1" alignment="1" pref="164" max="32767" attributes="0"/>
+                                          <Component id="txtReportRecordNum" max="32767" attributes="0"/>
+                                          <Component id="txtReportCheckingBal" max="32767" attributes="0"/>
+                                          <Component id="txtReportAllergy2" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="txtReportAllergy3" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="83" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblReportDOI" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                                  <Component id="lblReportDOE" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                                  <Component id="lblPicture" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                                  <Component id="lblLicenseNum" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                                  <Component id="lblReportBloodType" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtReportDOI" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtReportDOE" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblimg" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtReportLicenseNum" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
+                                  <Component id="txtReportBloodType" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="lblReportLicInfo" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblPersonalInfo" min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblReportBankInfo" alignment="3" min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="lblReportLicInfo" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblReportFirstName" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="txtReportFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblReportBankName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtReportBankName" alignment="3" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblReportLastName" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtReportLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblReportRoutingNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtReportRoutingNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtReportPhNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblReportPhNum" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="lblReportAccNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtReportAccountNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblReportDOB" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="txtReportDOB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblReportSavingBal" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="txtReportSavingBal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblReportCheckingBal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblReportAge" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="txtReportAge" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtReportCheckingBal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblReportHeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtReportHeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="3" attributes="0">
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <Component id="lblReportRecordNum" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtReportRecordNum" alignment="3" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblReportWeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtReportWeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="3" attributes="0">
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <Component id="lblReportAllergy1" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtReportAllergy1" alignment="3" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Group type="102" alignment="3" attributes="0">
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <Component id="lblReportAllergy2" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtReportAllergy2" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="lblReportSSN" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtReportSSN" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Group type="102" alignment="3" attributes="0">
+                                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                              <Component id="lblReportAllergy3" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="txtReportAllergy3" alignment="3" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblReportStreetAdd" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                          <Component id="txtReportStreetAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblLicenseNum" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Component id="lblReportDOI" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
+                                              <Component id="lblPicture" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="lblReportDOE" min="-2" pref="26" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="lblReportBloodType" min="-2" pref="25" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtReportLicenseNum" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Component id="txtReportDOI" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtReportDOE" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtReportBloodType" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                      <Component id="lblimg" min="-2" pref="125" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblReportCity" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="txtReportCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblReportState" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtReportState" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblReportZipCode" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtReportZipCode" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="18" style="0"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Final Report"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportFirstName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="First Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportLastName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Last Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportPhNum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Phone Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportDOB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Date Of Birth"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportAge">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Age"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportHeight">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Height"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPersonalInfo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="13" style="2"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Personal and Address Information"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportFirstName">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtReportFirstNameActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportLastName">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportPhNum">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportDOB">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportAge">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportHeight">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportWeight">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Weight"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportWeight">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportSSN">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="SSN"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportSSN">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportStreetAdd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Street Address"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportCity">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="City"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportState">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="State"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportStreetAddress">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtReportStreetAddressActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportCity">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportZipCode">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportZipCode">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Zip Code"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportState">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportBankInfo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="13" style="2"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Bank and Medical Information"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportBankName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bank Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportRoutingNum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Routing Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportBankName">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportRoutingNum">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtReportRoutingNumActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportAccNum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Account Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportAccountNum">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportSavingBal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Saving Balance"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportSavingBal">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportCheckingBal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Checking Balance"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportCheckingBal">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtReportCheckingBalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportRecordNum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Medical Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportAllergy1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Allergy 1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportAllergy2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Allergy 2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportAllergy3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Allergy 3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportRecordNum">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtReportRecordNumActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportLicInfo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="13" style="2"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="License Information"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLicenseNum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="License Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportDOI">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Date Of Issue"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportDOE">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Date Of Expiration"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPicture">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Picture"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportAllergy1">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportAllergy2">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtReportAllergy2ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportAllergy3">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportLicenseNum">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportDOI">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportDOE">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtReportDOEActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReportBloodType">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Blood Type"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReportBloodType">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblimg">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder roundedCorners="true"/>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
