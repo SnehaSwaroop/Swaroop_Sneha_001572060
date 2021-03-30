@@ -16,8 +16,11 @@ import Business.Employee.Employee;
 public class DeliveryManDirectory {
     
     private ArrayList<DeliveryMan> DeliveryManList;
-   
 
+    public DeliveryManDirectory() {
+        this.DeliveryManList = DeliveryManList;
+    }
+    
     public ArrayList<DeliveryMan> getDeliveryManList() {
         return DeliveryManList;
     }
@@ -25,18 +28,5 @@ public class DeliveryManDirectory {
     public void setDeliveryManList(ArrayList<DeliveryMan> DeliveryManList) {
         this.DeliveryManList = DeliveryManList;
     }
-    
-    public DeliveryManDirectory(){
-        DeliveryManList=new ArrayList<DeliveryMan>();
-    }
-    
-    public DeliveryMan newDeliveryMan(String name) {
-
-        DeliveryMan man = new DeliveryMan(name);
-        man.setName(name);
-        DeliveryManList.add(man);
-        return man;
-    }
-    
     
 }

@@ -6,6 +6,8 @@
 package Business.DeliveryMan;
 
 import Business.DeliveryMan.DeliveryManDirectory;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.WorkRequest;
 
 /**
  *
@@ -14,12 +16,9 @@ import Business.DeliveryMan.DeliveryManDirectory;
 public class DeliveryMan {
     
     private String name;
-    private DeliveryManDirectory deliveryManDirectory;
-
-    public DeliveryMan(String name) {
-        this.name = name;
-        this.deliveryManDirectory = deliveryManDirectory;
-    }
+    private String phoneNumber;
+    private WorkRequest workRequest;
+    private UserAccount userAccountLink;
 
     public String getName() {
         return name;
@@ -29,13 +28,29 @@ public class DeliveryMan {
         this.name = name;
     }
 
-    public DeliveryManDirectory getDeliveryManDirectory() {
-        return deliveryManDirectory;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setDeliveryManDirectory(DeliveryManDirectory deliveryManDirectory) {
-        this.deliveryManDirectory = deliveryManDirectory;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
-    
+
+    public WorkRequest getWorkRequest() {
+        return workRequest;
+    }
+
+    public void setWorkRequest(WorkRequest workRequest) {
+        this.workRequest = workRequest;
+    }
+
+    public UserAccount getUserAccountLink() {
+        return userAccountLink;
+    }
+
+    public void setUserAccountLink(UserAccount userAccountLink) {
+        this.userAccountLink = userAccountLink;
+    }
+
     
 }

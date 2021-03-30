@@ -44,26 +44,20 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        requestTestJButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        messageJTextField = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
         valueLabel = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        btnViewMenu = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnAddToOrder = new javax.swing.JButton();
+        BtnReviewOrder = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        requestTestJButton.setText("Request Test");
-        requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestTestJButtonActionPerformed(evt);
-            }
-        });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 95, -1, -1));
-
-        jLabel1.setText("Message");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 40, -1, -1));
-        add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 37, 89, -1));
 
         backJButton.setText("<<Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -71,21 +65,86 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 138, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
 
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 130, -1));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 130, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 30));
-    }// </editor-fold>//GEN-END:initComponents
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 120, 30));
 
-    private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-        
-        
-        
-    }//GEN-LAST:event_requestTestJButtonActionPerformed
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Select a Restaurant");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 170, 20));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Restaurant ID", "Restaurant Name"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(3);
+        }
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 420, 100));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Item", "Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(3);
+        }
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 420, 110));
+
+        btnViewMenu.setText("View Menu");
+        add(btnViewMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 120, -1));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Menu");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 150, 20));
+
+        btnAddToOrder.setText("Add to Order");
+        add(btnAddToOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 120, -1));
+
+        BtnReviewOrder.setText("Review Order");
+        add(BtnReviewOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 160, -1));
+    }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         
@@ -100,11 +159,17 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnReviewOrder;
     private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnAddToOrder;
+    private javax.swing.JButton btnViewMenu;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField messageJTextField;
-    private javax.swing.JButton requestTestJButton;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

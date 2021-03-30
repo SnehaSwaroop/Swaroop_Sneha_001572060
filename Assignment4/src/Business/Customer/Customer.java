@@ -6,6 +6,7 @@
 package Business.Customer;
 
 import Business.Customer.CustomerDirectory;
+import Business.UserAccount.UserAccount;
 /**
  *
  * @author harold
@@ -13,13 +14,9 @@ import Business.Customer.CustomerDirectory;
 public class Customer {
     
     private String name;
-    private CustomerDirectory customerDirectory;
-
-    public Customer(String name) {
-        this.name = name;
-        this.customerDirectory = customerDirectory;
-    }
-
+    private String phoneNumber;
+    private UserAccount userAccountLink;
+    
     public String getName() {
         return name;
     }
@@ -28,12 +25,25 @@ public class Customer {
         this.name = name;
     }
 
-    public CustomerDirectory getCustomerDirectory() {
-        return customerDirectory;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setCustomerDirectory(CustomerDirectory customerDirectory) {
-        this.customerDirectory = customerDirectory;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public UserAccount getUserAccountLink() {
+        return userAccountLink;
+    }
+
+    public void setUserAccountLink(UserAccount userAccountLink) {
+        this.userAccountLink = userAccountLink;
+    }
+    
+    @Override
+    public String toString() {
+        return getName();
     }
     
 }

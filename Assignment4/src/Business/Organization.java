@@ -23,6 +23,10 @@ public abstract class Organization {
     private int organizationID;
     private static int counter=0;
     
+    public void setUserAccountDirectory(UserAccountDirectory userAccountDirectory) {
+        this.userAccountDirectory = userAccountDirectory;
+    }
+    
     public enum Type{
         RestaurantAdmin("RestaurantAdmin"),
         Customer("Customer"),

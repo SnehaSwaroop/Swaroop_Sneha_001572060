@@ -15,27 +15,20 @@ import Business.Restaurant.Restaurant;
  */
 public class RestaurantDirectory {
     
-    private ArrayList<Restaurant> RestaurantList;
+    private ArrayList<Restaurant> restaurantList;
    
 
     public ArrayList<Restaurant> getRestaurantList() {
-        return RestaurantList;
+        return restaurantList;
     }
 
     public void setRestaurantList(ArrayList<Restaurant> RestaurantList) {
-        this.RestaurantList = RestaurantList;
+        this.restaurantList = RestaurantList;
     }
 
     public RestaurantDirectory(){
-        RestaurantList=new ArrayList<Restaurant>();
+        restaurantList=new ArrayList<Restaurant>();
     }
     
-    public Restaurant newRestaurant(String name) {
-
-        Restaurant restaurant = new Restaurant(name);
-        restaurant.setName(name);
-        RestaurantList.add(restaurant);
-        return restaurant;
-    }
     
 }

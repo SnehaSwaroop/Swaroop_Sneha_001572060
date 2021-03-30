@@ -6,6 +6,7 @@
 package Business.Customer;
 
 import Business.Customer.Customer;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -14,25 +15,24 @@ import java.util.ArrayList;
  */
 public class CustomerDirectory {
     
-    private ArrayList<Customer> CustomerList;
+    private ArrayList<Customer> customerList;
 
     public ArrayList<Customer> getCustomerList() {
-        return CustomerList;
+        return customerList;
     }
 
-    public void setCustomerList(ArrayList<Customer> CustomerList) {
-        this.CustomerList = CustomerList;
+    public void setCustomerList(ArrayList<Customer> customerList) {
+        this.customerList = customerList;
     }
     
-    public CustomerDirectory(){
-        CustomerList=new ArrayList<Customer>();
-    }
-    
-    public Customer newCustomer(String name) {
-
-        Customer customer = new Customer(name);
-        customer.setName(name);
-        CustomerList.add(customer);
+    public Customer getCustomerByUserAccount(UserAccount ua) {
+        Customer customer = null;
+        
+        for (Customer c: customerList) {
+            if (c.getUserAccountLink().equals(ua))
+                customer = c;
+        }
+        
         return customer;
     }
     

@@ -133,52 +133,21 @@ public class MainJFrame extends javax.swing.JFrame {
         Organization inOrganization=null;
         
         if(userAccount==null){
-            //Step 2: Go inside each network and check each enterprise
-            for(Customer customer:system.getCustomerList()){
-                //Step 2.a: check against each enterprise
-                for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
-                    userAccount=enterprise.getUserAccountDirectory().authenticateUser(userName, password);
-                    if(userAccount==null){
-                       //Step 3:check against each organization for each enterprise
-                       for(Organization organization:enterprise.getOrganizationDirectory().getOrganizationList()){
-                           userAccount=organization.getUserAccountDirectory().authenticateUser(userName, password);
-                           if(userAccount!=null){
-                               inEnterprise=enterprise;
-                               inOrganization=organization;
-                               break;
-                           }
-                       }
-                        
-                    }
-                    else{
-                       inEnterprise=enterprise;
-                       break;
-                    }
-                    if(inOrganization!=null){
-                        break;
-                    }  
-                }
-                if(inEnterprise!=null){
-                    break;
-                }
-            }
-        }
-        
-        if(userAccount==null){
             JOptionPane.showMessageDialog(null, "Invalid credentials");
             return;
         }
-        else{
-            CardLayout layout=(CardLayout)container.getLayout();
-            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system));
-            layout.next(container);
-        }
-        
+        else 
+        {
         loginJButton.setEnabled(false);
         logoutJButton.setEnabled(true);
         userNameJTextField.setEnabled(false);
         passwordField.setEnabled(false);
-             
+        }
+        
+        JPanel panel = userAccount.getRole().createWorkArea(container, userAccount, system);
+        container.add("LoggedInScreen", panel);
+        CardLayout layout = (CardLayout)this.container.getLayout();
+        layout.next(container);
        
     }//GEN-LAST:event_loginJButtonActionPerformed
 
