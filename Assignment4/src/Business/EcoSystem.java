@@ -74,7 +74,7 @@ public class EcoSystem extends Organization{
     }
     
     private EcoSystem(){
-        super(null);
+        super("Doordash");
        // networkList=new ArrayList<Network>();
         this.restaurantDirectory = new RestaurantDirectory();
         this.customerDirectory = new CustomerDirectory();

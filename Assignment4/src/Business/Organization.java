@@ -20,12 +20,15 @@ public abstract class Organization {
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
-    private int organizationID;
-    private static int counter=0;
     
     public void setUserAccountDirectory(UserAccountDirectory userAccountDirectory) {
         this.userAccountDirectory = userAccountDirectory;
     }
+    
+    private int organizationID;
+    private static int counter=0;
+    
+    
     
     public enum Type{
         RestaurantAdmin("RestaurantAdmin"),

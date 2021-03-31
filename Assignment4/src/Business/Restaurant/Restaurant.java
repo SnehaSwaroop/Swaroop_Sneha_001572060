@@ -79,5 +79,8 @@ public class Restaurant {
         this.deliveryManList = deliveryManList;
     }
 
-    
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

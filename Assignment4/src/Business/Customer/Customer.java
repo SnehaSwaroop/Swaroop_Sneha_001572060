@@ -15,7 +15,9 @@ public class Customer {
     
     private String name;
     private String phoneNumber;
-    private UserAccount userAccountLink;
+    private String email;
+    private String address;
+    private UserAccount userAccount;
     
     public String getName() {
         return name;
@@ -33,12 +35,28 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public UserAccount getUserAccountLink() {
-        return userAccountLink;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserAccountLink(UserAccount userAccountLink) {
-        this.userAccountLink = userAccountLink;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
     
     @Override

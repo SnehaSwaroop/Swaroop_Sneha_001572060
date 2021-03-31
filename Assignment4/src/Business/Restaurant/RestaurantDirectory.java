@@ -8,6 +8,7 @@ package Business.Restaurant;
 
 import java.util.ArrayList;
 import Business.Restaurant.Restaurant;
+import Business.UserAccount.UserAccount;
 
 /**
  *
@@ -28,6 +29,17 @@ public class RestaurantDirectory {
 
     public RestaurantDirectory(){
         restaurantList=new ArrayList<Restaurant>();
+    }
+    
+    public Restaurant getRestaurantBasedOnAdminName(UserAccount ua) {
+        Restaurant rest = null;
+        
+        for (Restaurant r : restaurantList) {
+            if(r.getAdmin().equals(ua))
+                rest = r;
+        }
+        
+        return rest;
     }
     
     

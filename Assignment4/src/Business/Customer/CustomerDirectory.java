@@ -16,6 +16,10 @@ import java.util.ArrayList;
 public class CustomerDirectory {
     
     private ArrayList<Customer> customerList;
+    
+    public CustomerDirectory() {
+        customerList = new ArrayList<Customer>();
+    }
 
     public ArrayList<Customer> getCustomerList() {
         return customerList;
@@ -24,16 +28,17 @@ public class CustomerDirectory {
     public void setCustomerList(ArrayList<Customer> customerList) {
         this.customerList = customerList;
     }
+
     
-    public Customer getCustomerByUserAccount(UserAccount ua) {
+    public Customer getCustomerByUserAccount(UserAccount user) {
         Customer customer = null;
         
         for (Customer c: customerList) {
-            if (c.getUserAccountLink().equals(ua))
+            if (c.getUserAccount().equals(user))
                 customer = c;
         }
         
         return customer;
     }
-    
 }
+    

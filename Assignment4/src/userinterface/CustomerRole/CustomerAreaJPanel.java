@@ -4,8 +4,8 @@
  */
 package userinterface.CustomerRole;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
-
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -20,17 +20,19 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-
     private UserAccount userAccount;
+    EcoSystem ecosystem;
+    Customer customer;
+    
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount account) {
+    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, Customer customer) {
         initComponents();
-        
         this.userProcessContainer = userProcessContainer;
-      
         this.userAccount = account;
+        this.ecosystem = system;
+        this.customer = customer;
         //valueLabel.setText(enterprise.getName());
         populateRequestTable();
     }
