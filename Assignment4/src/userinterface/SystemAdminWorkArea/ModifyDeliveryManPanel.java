@@ -29,12 +29,11 @@ public class ModifyDeliveryManPanel extends javax.swing.JPanel {
     /**
      * Creates new form ModifyDeliveryManPanel
      */
-    public ModifyDeliveryManPanel(JPanel upc, EcoSystem system, DeliveryMan d) {
-        this.userProcessContainer = upc;
-        this.ecosystem = system;
-        this.deliveryMan = d;
-        this.restaurant = restaurant;
-        
+    public ModifyDeliveryManPanel(JPanel userprocesscontainer, EcoSystem ecosystem, DeliveryMan man) {
+        this.userProcessContainer = userprocesscontainer;
+        this.ecosystem = ecosystem;
+        this.deliveryMan = man;
+//        this.restaurant = restaurant;
         initComponents();
         
         txtName.setText(this.deliveryMan.getName());
@@ -145,26 +144,20 @@ public class ModifyDeliveryManPanel extends javax.swing.JPanel {
             this.deliveryMan.setName(txtName.getText());
             this.deliveryMan.setPhoneNumber(txtPhoneNumber.getText());
             this.deliveryMan.setAddress(txtAddress.getText());
-            
-            
-            //Change DeliveryMan's associated user account details
-            this.deliveryMan.getUserAccount().setUsername(txtName.getText());
+            this.deliveryMan.getUserAccount().setUsername(txtName.getText());           //Change DeliveryMan user account
             
             userProcessContainer.remove(this);
             CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
-            Component[] comps = userProcessContainer.getComponents();
-            for (Component comp : comps){
+            Component[] component = userProcessContainer.getComponents();
+            for (Component comp : component){
             if (comp instanceof ManageCustomerFirstPage){
                 System.out.println(comp);
                 ManageDeliveryManFirstPage panel = (ManageDeliveryManFirstPage) comp;
                 panel.populateTable();
-                panel.displayDeliverMenTable(restaurant);
+                panel.populateDeliveryManTable(restaurant);
             }
         }
-          
         cardlayout.previous(userProcessContainer);
-            
-        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

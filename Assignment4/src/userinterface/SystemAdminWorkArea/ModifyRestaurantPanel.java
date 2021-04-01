@@ -21,9 +21,9 @@ public class ModifyRestaurantPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     Restaurant restaurant; 
     
-    public ModifyRestaurantPanel(JPanel upc, Restaurant r) {
-        this.userProcessContainer = upc;
-        this.restaurant=r;
+    public ModifyRestaurantPanel(JPanel userprocesscontainer, Restaurant restaurant) {
+        this.userProcessContainer = userprocesscontainer;
+        this.restaurant=restaurant;
         initComponents();
         
         txtID.setText(this.restaurant.getRestaurantId());
@@ -132,35 +132,37 @@ public class ModifyRestaurantPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
        
-             restaurant.setName(txtName.getText());
-             restaurant.setRestaurantId(txtID.getText());
-             restaurant.getAdmin().setUsername(txtAdmin.getText());
-             
-             JOptionPane.showMessageDialog(null, "Restaurant modified successfully");
-             
-             userProcessContainer.remove(this);
+            restaurant.setName(txtName.getText());
+            restaurant.setRestaurantId(txtID.getText());
+            restaurant.getAdmin().setUsername(txtAdmin.getText());
+            JOptionPane.showMessageDialog(null, "Restaurant modified successfully");
+            userProcessContainer.remove(this);
             CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
-            Component[] comps = userProcessContainer.getComponents();
-            for (Component comp : comps){
-            if (comp instanceof ManageCustomerFirstPage){
+            Component[] component = userProcessContainer.getComponents();
+            for (Component comp : component){
+                if (comp instanceof ManageCustomerFirstPage){
                 System.out.println(comp);
-                ManageCustomerFirstPage panel = (ManageCustomerFirstPage) comp;
+                ManageResturantFirstPage panel = (ManageResturantFirstPage) comp;
                 panel.populateTable();
             }
         }
-          
         cardlayout.previous(userProcessContainer);
-             
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[0];
-        SystemAdminWorkAreaJPanel panel = (SystemAdminWorkAreaJPanel) component;
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
+         // Restore prev screen's state
+        Component[] component = userProcessContainer.getComponents();
+          for (Component comp : component){
+                if (comp instanceof ManageResturantFirstPage){
+                System.out.println(comp);
+                ManageResturantFirstPage panel = (ManageResturantFirstPage) comp;
+                panel.populateTable();
+            }
+        } 
+        cardlayout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
 

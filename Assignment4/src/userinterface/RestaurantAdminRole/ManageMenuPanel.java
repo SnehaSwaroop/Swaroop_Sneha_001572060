@@ -8,9 +8,11 @@ package userinterface.RestaurantAdminRole;
 import Business.Restaurant.Menu;
 import Business.Restaurant.Restaurant;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
@@ -83,6 +85,11 @@ public class ManageMenuPanel extends javax.swing.JPanel {
         jLabel1.setText("Manage Menu");
 
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +164,7 @@ public class ManageMenuPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblMenu.getSelectedRow();
         if (selectedRow >= 0){
-            Menu selectedMenuItem = (Menu) tblMenu.getValueAt(selectedRow, 1);
+            Menu selectedMenuItem = (Menu) tblMenu.getValueAt(selectedRow, 0);
             //Delete the MenuItem out from the restaurant
             this.restaurant.getMenu().remove(selectedMenuItem);
             JOptionPane.showMessageDialog(null, "Deleted selected Item from Menu");
@@ -173,7 +180,7 @@ public class ManageMenuPanel extends javax.swing.JPanel {
         int selectedRow = tblMenu.getSelectedRow();
         
         if (selectedRow >= 0){
-            Menu selectedMenuItem = (Menu) tblMenu.getValueAt(selectedRow, 1);
+            Menu selectedMenuItem = (Menu) tblMenu.getValueAt(selectedRow, 0);
 
             ModifyMenuPanel vm = new ModifyMenuPanel(userProcessContainer, selectedMenuItem);
             userProcessContainer.add("ViewMenu", vm);
@@ -184,6 +191,13 @@ public class ManageMenuPanel extends javax.swing.JPanel {
            JOptionPane.showMessageDialog(null,"Please select a Menu Item to View", "Warning", JOptionPane.WARNING_MESSAGE); 
         }
     }//GEN-LAST:event_btnModifyActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

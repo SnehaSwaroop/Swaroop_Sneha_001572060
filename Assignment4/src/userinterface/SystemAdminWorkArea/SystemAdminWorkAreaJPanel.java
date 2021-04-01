@@ -27,23 +27,19 @@ import userinterface.CustomerRole.CustomerAreaJPanel;
  */
 public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SystemAdminWorkAreaJPanel
-     */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    //Restaurant restaurant;
+    
     public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.ecosystem=ecosystem;
-        
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
         populateTree();
     }
     
     public void populateTree(){
         DefaultTreeModel model=(DefaultTreeModel)jTree.getModel();
-       // Add the code for draw your system structure shown by JTree
+       // Add the code for your JTree structure
        
        DefaultMutableTreeNode admin = new DefaultMutableTreeNode("Admin ");
        DefaultMutableTreeNode customerTree = new DefaultMutableTreeNode("Customers");
@@ -55,14 +51,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
        DeliveryManDirectory deliveryMen = ecosystem.getDeliveryManDirectory();
        
        if (customers.getCustomerList() != null) {
-           for (Customer cust : customers.getCustomerList()) {
-               customerTree.add(new DefaultMutableTreeNode(cust));
+           for (Customer customer : customers.getCustomerList()) {
+               customerTree.add(new DefaultMutableTreeNode(customer));
            }
        }
        
        if (restaurants.getRestaurantList() != null) {
-           for (Restaurant rest : restaurants.getRestaurantList()) {
-               restaurantTree.add(new DefaultMutableTreeNode(rest));
+           for (Restaurant restaurant : restaurants.getRestaurantList()) {
+               restaurantTree.add(new DefaultMutableTreeNode(restaurant));
            }
        }
        
@@ -202,9 +198,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageRestaurantActionPerformed
         ManageResturantFirstPage panel = new ManageResturantFirstPage(userProcessContainer, ecosystem);
-       userProcessContainer.add("ManageRestaurants",panel);
-       CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
-       layout.next(userProcessContainer);
+        userProcessContainer.add("ManageRestaurants",panel);
+        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageRestaurantActionPerformed
 
     private void btnManageDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDeliveryManActionPerformed

@@ -12,9 +12,9 @@ package Business.Customer;
 public class Order {
     
     private String name;
-    private String price;
+    private double price;
 
-    public Order(String name, String price) {
+    public Order(String name, double price) {
         this.name = name;
         this.price = price;
     }
@@ -27,11 +27,11 @@ public class Order {
         this.name = name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     

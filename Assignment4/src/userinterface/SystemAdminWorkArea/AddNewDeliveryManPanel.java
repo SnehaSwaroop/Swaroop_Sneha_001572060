@@ -28,9 +28,9 @@ public class AddNewDeliveryManPanel extends javax.swing.JPanel {
     Restaurant restaurant;
    
     
-    public AddNewDeliveryManPanel(JPanel upc, Restaurant r, EcoSystem ecosystem) {
-        this.userProcessContainer = upc;
-        this.restaurant = r;
+    public AddNewDeliveryManPanel(JPanel userprocesscontainer, Restaurant restaurant, EcoSystem ecosystem) {
+        this.userProcessContainer = userprocesscontainer;
+        this.restaurant = restaurant;
         this.ecosystem = ecosystem;
         initComponents();
     }
@@ -136,40 +136,44 @@ public class AddNewDeliveryManPanel extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         DeliveryMan man = new DeliveryMan();
-        
-        //Creating User Account
-        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(txtName.getText());
-        UserAccount user = ecosystem.getUserAccountDirectory().createUserAccount(txtName.getText(), "deliveryAdmin", employee, new DeliverManRole());
-        
-        //Creatng Delivery Man and asociating useraccount
+        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(txtName.getText());             //Creating User Account
+        UserAccount user = ecosystem.getUserAccountDirectory().createUserAccount(txtName.getText(), "admin", employee, new DeliverManRole());
+        //Creating Delivery Man and useraccount
         man.setUserAccount(user); 
         man.setName(txtName.getText());
         man.setPhoneNumber(txtPhoneNumber.getText());
         man.setAddress(txtAddress.getText());
         
-        //Adding the Ecosystem - Delivery Man
-        ecosystem.getDeliveryManDirectory().getDeliveryManList().add(man);
-        
-        //Adding Delivery Man to the Restaurant chosen
-        restaurant.getDeliveryManList().add(man);
-        
-        JOptionPane.showMessageDialog(null, "Added Delivery Man for " + restaurant.getName());
-        
-        //Populate previous screen table 
-        userProcessContainer.remove(this);
+        if(txtName.getText().isEmpty() || txtPhoneNumber.getText().isEmpty() || txtAddress.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fields cannot be left empty");
+            return;
+        }
+        boolean flag;
+        String phoneNumber = txtPhoneNumber.getText();
+        if(phoneNumber.length() != 10) {
+            JOptionPane.showMessageDialog(null, "Phone Number must be of 10 digits");
+            return;
+        }
+        flag = phoneNumber.matches("^[0-9]+$");
+        if(!flag) {
+            JOptionPane.showMessageDialog(null, "Phone Number must have digits only");
+            return;
+        }
+        ecosystem.getDeliveryManDirectory().getDeliveryManList().add(man);      //Adding DeliveryMan to Ecosystem 
+        restaurant.getDeliveryManList().add(man);                               //Adding Delivery Man to the Restaurant
+        JOptionPane.showMessageDialog(null, "Added Delivery Man for " + restaurant.getName()); 
+        userProcessContainer.remove(this);                                      //Populate previous screen table 
         CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
         Component[] component = userProcessContainer.getComponents();
-
           for (Component comp : component){
             if (comp instanceof ManageDeliveryManFirstPage){
                 System.out.println(comp);
                 ManageDeliveryManFirstPage panel = (ManageDeliveryManFirstPage) comp;
                 panel.populateTable();
-                panel.displayDeliverMenTable(restaurant);
+                panel.populateDeliveryManTable(restaurant);
             }
         }
-          
-         cardlayout.previous(userProcessContainer); 
+        cardlayout.previous(userProcessContainer); 
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

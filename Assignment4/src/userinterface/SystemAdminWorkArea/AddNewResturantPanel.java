@@ -131,32 +131,31 @@ public class AddNewResturantPanel extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         Restaurant restaurant = new Restaurant();
-                
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(txtAdmin.getText());
         UserAccount user = ecosystem.getUserAccountDirectory().createUserAccount(txtAdmin.getText(), "admin", employee, new AdminRole());
-        restaurant.setAdmin(user); //While deleting, make sure to remove user from userDirectory too
+        restaurant.setAdmin(user);                                              //remove user from userDirectory too
         restaurant.setRestaurantId(txtID.getText());
         restaurant.setName(txtName.getText());
+        
+        if(txtName.getText().isEmpty() || txtID.getText().isEmpty() || txtAdmin.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fields cannot be left empty");
+            return;
+        }
+        
         ecosystem.getRestaurantDirectory().getRestaurantList().add(restaurant);
         JOptionPane.showMessageDialog(null, "New restaurant added");
         
-        //Populate previous screen table and navigate back.
-        userProcessContainer.remove(this);
+        userProcessContainer.remove(this);                                      //Populate previous screen table
         CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
-        
-         //Restore prev screen's state
-        Component[] comps = userProcessContainer.getComponents();
-
-          for (Component comp : comps){
+        Component[] component = userProcessContainer.getComponents(); 
+          for (Component comp : component){
             if (comp instanceof ManageResturantFirstPage){
                 System.out.println(comp);
                 ManageResturantFirstPage panel = (ManageResturantFirstPage) comp;
                 panel.populateTable();
             }
-        }
-          
+        } 
         cardlayout.previous(userProcessContainer);
-    
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

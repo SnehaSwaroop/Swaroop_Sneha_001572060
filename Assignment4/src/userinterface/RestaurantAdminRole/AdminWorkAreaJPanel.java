@@ -6,6 +6,7 @@ package userinterface.RestaurantAdminRole;
 import Business.Restaurant.Restaurant;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.SystemAdminWorkArea.ModifyRestaurantPanel;
 
 /**
  *
@@ -22,7 +23,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.restaurant = r;
       
-        //valueLabel.setText();
+        valueLabel.setText(this.restaurant.getName());
     }
     
     /** This method is called from within the constructor to
@@ -34,7 +35,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        userJButton = new javax.swing.JButton();
+        btnRestaurantInfo = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         manageOrganizationJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
@@ -46,13 +47,13 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("My Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
-        userJButton.setText("Manage Restaurant Info");
-        userJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnRestaurantInfo.setText("Manage Restaurant Info");
+        btnRestaurantInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userJButtonActionPerformed(evt);
+                btnRestaurantInfoActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 180, -1));
+        add(btnRestaurantInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 180, -1));
 
         btnMenu.setText("Manage Menu");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -78,29 +79,36 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
+    private void btnRestaurantInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestaurantInfoActionPerformed
         // TODO add your handling code here:
+            ModifyRestaurantPanel panel = new ModifyRestaurantPanel(userProcessContainer, restaurant);
+            userProcessContainer.add("ViewRestaurant", panel);
+            CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
         
-    }//GEN-LAST:event_userJButtonActionPerformed
+    }//GEN-LAST:event_btnRestaurantInfoActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        ManageMenuPanel mm =  new ManageMenuPanel(userProcessContainer, restaurant);
-        userProcessContainer.add("manageMenu", mm);
+        ManageMenuPanel panel =  new ManageMenuPanel(userProcessContainer, restaurant);
+        userProcessContainer.add("manageMenu", panel);
         CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
         layout.next(userProcessContainer); 
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
-
+        ManageOrderPanel mo =  new ManageOrderPanel(userProcessContainer, restaurant);
+        userProcessContainer.add("manageOrders", mo);
+        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        layout.next(userProcessContainer); 
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnRestaurantInfo;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton manageOrganizationJButton;
-    private javax.swing.JButton userJButton;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
     

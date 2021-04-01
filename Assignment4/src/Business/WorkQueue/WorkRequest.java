@@ -21,6 +21,15 @@ public abstract class WorkRequest {
     private Date requestDate;
     private Date resolveDate;
     private Customer customer;
+    private String comments;
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
     
     public WorkRequest(){
         requestDate = new Date();
@@ -82,5 +91,8 @@ public abstract class WorkRequest {
         this.customer = customer;
     }
     
-    
+    @Override
+    public String toString() {
+        return getMessage();
+    }
 }

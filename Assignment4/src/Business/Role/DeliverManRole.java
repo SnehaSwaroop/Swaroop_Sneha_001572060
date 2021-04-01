@@ -20,7 +20,7 @@ public class DeliverManRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         Restaurant restaurant = business.getRestaurantDirectory().getRestaurantBasedonDelManName(account);
-        return new DeliveryManWorkAreaJPanel(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
+        return new DeliveryManWorkAreaJPanel(userProcessContainer,account,business,restaurant);//To change body of generated methods, choose Tools | Templates.
     }
     
 }

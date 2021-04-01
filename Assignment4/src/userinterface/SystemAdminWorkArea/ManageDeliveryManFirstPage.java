@@ -24,49 +24,38 @@ public class ManageDeliveryManFirstPage extends javax.swing.JPanel {
     EcoSystem ecosystem;
     Restaurant restaurant;
     
-    public ManageDeliveryManFirstPage(JPanel upc, EcoSystem system) {
-        this.userProcessContainer = upc;
-        this.ecosystem = system;
+    public ManageDeliveryManFirstPage(JPanel userprocesscontainer, EcoSystem ecosystem) {
+        this.userProcessContainer = userprocesscontainer;
+        this.ecosystem = ecosystem;
         this.restaurant = restaurant;
-        
         initComponents();
         populateTable();
     }
     
     public void populateTable() {
-        DefaultTableModel model = (DefaultTableModel)tblRestaurant.getModel();
-        model.setRowCount(0);
-        //int count = 1;
-        //Supplier supplier = (Supplier)suppComboBox1.getSelectedItem();
+        DefaultTableModel table = (DefaultTableModel)tblRestaurant.getModel();
+        table.setRowCount(0);
         if (ecosystem.getRestaurantDirectory().getRestaurantList() != null) {
-            for(Restaurant r : ecosystem.getRestaurantDirectory().getRestaurantList()) {
+            for(Restaurant restaurant : ecosystem.getRestaurantDirectory().getRestaurantList()) {
                 Object row[] = new Object[2];
-                row[0] = r;
-                row[1] = r.getRestaurantId();
-                model.addRow(row); 
-                //count++;
+                row[0] = restaurant;
+                row[1] = restaurant.getRestaurantId();
+                table.addRow(row);
             }       
         }
        
     }
-    
-    public void displayDeliverMenTable(Restaurant restaurant) {
-    
+    public void populateDeliveryManTable(Restaurant restaurant) {
         DefaultTableModel table = (DefaultTableModel)tblDeliveryMan.getModel();
         table.setRowCount(0);
-        //int count = 1;
-        
-        for(DeliveryMan deliveryMan : restaurant.getDeliveryManList()) {
+        for(DeliveryMan man : restaurant.getDeliveryManList()) {
             Object row[] = new Object[3];
-            row[0] = deliveryMan;
-            row[1] = deliveryMan.getPhoneNumber();
-            row[2] = deliveryMan.getAddress();
-            
+            row[0] = man;
+            row[1] = man.getPhoneNumber();
+            row[2] = man.getAddress();
             table.addRow(row); 
-            //count++;
         }   
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,6 +76,7 @@ public class ManageDeliveryManFirstPage extends javax.swing.JPanel {
         btnAdd = new javax.swing.JButton();
         btnModify = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -150,6 +140,18 @@ public class ManageDeliveryManFirstPage extends javax.swing.JPanel {
         });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -159,7 +161,9 @@ public class ManageDeliveryManFirstPage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefresh)
+                .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -170,7 +174,9 @@ public class ManageDeliveryManFirstPage extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(137, 137, 137))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(174, 174, 174)
@@ -181,40 +187,41 @@ public class ManageDeliveryManFirstPage extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRefresh))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 23, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnViewDeliveryMan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnModify)
                     .addComponent(btnDelete))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblRestaurant.getSelectedRow();
-
-        if (selectedRow >= 0){
-            Restaurant restaurant = (Restaurant) tblRestaurant.getValueAt(selectedRow, 0);
-            AddNewDeliveryManPanel cdm = new AddNewDeliveryManPanel(userProcessContainer, restaurant, ecosystem);
-            userProcessContainer.add("CreateDeliveryMan", cdm);
-            CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
-        } else {
-           JOptionPane.showMessageDialog(null,"Please select a restaurant", "Warning", JOptionPane.WARNING_MESSAGE); 
-        }
-         
+        int selectedRowIndex = tblRestaurant.getSelectedRow();
+           if (selectedRowIndex<0){
+               JOptionPane.showMessageDialog(null,"Please select a restaurant", "Warning", JOptionPane.WARNING_MESSAGE); 
+           }
+           else {
+                Restaurant restaurant = (Restaurant) tblRestaurant.getValueAt(selectedRowIndex, 0);
+                AddNewDeliveryManPanel panel = new AddNewDeliveryManPanel(userProcessContainer, restaurant, ecosystem);
+                userProcessContainer.add("CreateDeliveryMan", panel);
+                CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+           }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -231,33 +238,54 @@ public class ManageDeliveryManFirstPage extends javax.swing.JPanel {
     private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblDeliveryMan.getSelectedRow();
-        
-        if (selectedRow >= 0){
+          if (selectedRow<0){  
+              JOptionPane.showMessageDialog(null,"Please select a DeliveryMan to Modify", "Warning", JOptionPane.WARNING_MESSAGE);
+          }
+          else {
             DeliveryMan selectedDeliveryMan = (DeliveryMan) tblDeliveryMan.getValueAt(selectedRow, 0);
-            
             ModifyDeliveryManPanel panel = new ModifyDeliveryManPanel(userProcessContainer, ecosystem, selectedDeliveryMan);
             userProcessContainer.add("ViewDeliveryMan", panel);
             CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
-            layout.next(userProcessContainer); 
-        } else {
-           JOptionPane.showMessageDialog(null,"Please select a DeliveryMan to Modify", "Warning", JOptionPane.WARNING_MESSAGE); 
-        }
-        
-        
-        
+            layout.next(userProcessContainer);
+          }
     }//GEN-LAST:event_btnModifyActionPerformed
 
     private void btnViewDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDeliveryManActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRestaurant.getSelectedRow();
-
-        if (selectedRow >= 0){
-            Restaurant selectedRestaurant = (Restaurant) tblRestaurant.getValueAt(selectedRow, 0);
-           displayDeliverMenTable(selectedRestaurant);
-        } else {
-           JOptionPane.showMessageDialog(null,"Please select a Restaurant", "Warning", JOptionPane.WARNING_MESSAGE); 
-        }   
+            if (selectedRow<0){
+             JOptionPane.showMessageDialog(null,"Please select a Restaurant", "Warning", JOptionPane.WARNING_MESSAGE); 
+            }
+            else {
+                Restaurant selectedRestaurant = (Restaurant) tblRestaurant.getValueAt(selectedRow, 0);
+                populateDeliveryManTable(selectedRestaurant);
+            }
+            
     }//GEN-LAST:event_btnViewDeliveryManActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblDeliveryMan.getSelectedRow();
+        if (selectedRow<0){
+            JOptionPane.showMessageDialog(null,"Please select a DeliveryMan to Delete", "Warning", JOptionPane.WARNING_MESSAGE); 
+        }
+        else {
+            DeliveryMan selectedDeliveryMan = (DeliveryMan) tblDeliveryMan.getValueAt(selectedRow, 0);
+            Restaurant restaurant = this.ecosystem.getRestaurantDirectory().getRestaurantBasedonDelManName(selectedDeliveryMan.getUserAccount());       //Find restaurant of Delivery Man
+            restaurant.getDeliveryManList().remove(selectedDeliveryMan);        //Delete deliveryman account from Restaurant
+            this.ecosystem.getDeliveryManDirectory().getDeliveryManList().remove(selectedDeliveryMan);      //Delete DeliveryMan account from Ecosystem
+            this.ecosystem.getUserAccountDirectory().deleteUser(selectedDeliveryMan.getUserAccount().getUsername());    //Delete User Account of Delivery man
+            JOptionPane.showMessageDialog(null, "Deleted the selected Delivery Man successfully");
+            populateDeliveryManTable(restaurant);
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblRestaurant.getSelectedRow();
+        Restaurant selectedRestaurant = (Restaurant) tblRestaurant.getValueAt(selectedRow, 0);
+        populateDeliveryManTable(selectedRestaurant);
+    }//GEN-LAST:event_btnRefreshActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -265,6 +293,7 @@ public class ManageDeliveryManFirstPage extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnModify;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnViewDeliveryMan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -18,16 +18,14 @@ import javax.swing.table.DefaultTableModel;
  * @author snehaswaroop
  */
 public class ManageCustomerFirstPage extends javax.swing.JPanel {
+    
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-
-    /**
-     * Creates new form ManageCustomerFirstPage
-     */
-    public ManageCustomerFirstPage(JPanel userProcessContainer, EcoSystem system) {
+    
+    public ManageCustomerFirstPage(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.ecosystem = system;
+        this.ecosystem = ecosystem;
         populateTable();
     }
     
@@ -45,7 +43,6 @@ public class ManageCustomerFirstPage extends javax.swing.JPanel {
         }
     }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,26 +150,28 @@ public class ManageCustomerFirstPage extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
         userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-        sysAdminwjp.populateTree();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-        
+        CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
+        Component[] component = userProcessContainer.getComponents();            //Restore previous screen
+          for (Component comp : component){
+            if (comp instanceof SystemAdminWorkAreaJPanel){
+                System.out.println(comp);
+                SystemAdminWorkAreaJPanel panel = (SystemAdminWorkAreaJPanel) comp;
+                panel.populateTree();
+            }
+        }
+        cardlayout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCustomerActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = CustomerData.getSelectedRow();
         if (selectedRowIndex<0) {
-            JOptionPane.showMessageDialog(null,"Please select a Customer to delete", "Warning", JOptionPane.WARNING_MESSAGE); 
+            JOptionPane.showMessageDialog(null,"Please select a customer to delete", "Warning", JOptionPane.WARNING_MESSAGE); 
         }
         else {
             Customer selectedCustomer = (Customer) CustomerData.getValueAt(selectedRowIndex, 0);
-            this.ecosystem.getUserAccountDirectory().deleteUser(selectedCustomer.getName());  //Delete the UserAccount recorded associated with the Customer
-            //Delete the Customer out from the ecosystem
-            this.ecosystem.getCustomerDirectory().getCustomerList().remove(selectedCustomer);
+            this.ecosystem.getUserAccountDirectory().deleteUser(selectedCustomer.getName());  //Delete the UserAccount associated with the Customer
+            this.ecosystem.getCustomerDirectory().getCustomerList().remove(selectedCustomer);   //Delete the Customer from the ecosystem
             populateTable();
             JOptionPane.showMessageDialog(null, "Deleted selected customer");
         }
@@ -198,6 +197,7 @@ public class ManageCustomerFirstPage extends javax.swing.JPanel {
             userProcessContainer.add("ModifyCustomer", panel);
             CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
             layout.next(userProcessContainer); 
+            populateTable();
         }
     }//GEN-LAST:event_btnModifyCustomerActionPerformed
 

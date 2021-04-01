@@ -160,25 +160,19 @@ public class ModifyCustomerPanel extends javax.swing.JPanel {
             customer.setPhoneNumber(txtPhoneNumber.getText());
             customer.setEmail(txtEmail.getText());
             customer.setAddress(txtAddress.getText());
-            
-            //Change Customer's associated user account details
-            this.customer.getUserAccount().setUsername(txtName.getText());
-         
+            this.customer.getUserAccount().setUsername(txtName.getText());      //Change Customer user account details
             JOptionPane.showMessageDialog(null,"Customer updated Successfully");
-          
             userProcessContainer.remove(this);
             CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
-            Component[] comps = userProcessContainer.getComponents();
-            for (Component comp : comps){
+            Component[] component = userProcessContainer.getComponents();
+            for (Component comp : component){
             if (comp instanceof ManageCustomerFirstPage){
                 System.out.println(comp);
                 ManageCustomerFirstPage panel = (ManageCustomerFirstPage) comp;
                 panel.populateTable();
             }
         }
-          
         cardlayout.previous(userProcessContainer);
-        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

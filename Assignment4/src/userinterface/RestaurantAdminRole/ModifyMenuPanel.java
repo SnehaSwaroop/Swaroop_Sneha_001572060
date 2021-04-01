@@ -11,6 +11,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.SystemAdminWorkArea.ManageCustomerFirstPage;
+import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
@@ -18,14 +19,17 @@ import userinterface.SystemAdminWorkArea.ManageCustomerFirstPage;
  */
 public class ModifyMenuPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
-     Menu menuItem;
+     Menu menu;
     /**
      * Creates new form ModifyMenuPanel
      */
-    public ModifyMenuPanel(JPanel upc, Menu m) {
-        this.userProcessContainer = upc;
-        this.menuItem = m;
+    public ModifyMenuPanel(JPanel userprocesscontainer, Menu menu) {
+        this.userProcessContainer = userprocesscontainer;
+        this.menu = menu;
         initComponents();
+        
+        txtName.setText(this.menu.getName());
+        txtPrice.setText(Double.toString(this.menu.getPrice()));
     }
 
     /**
@@ -50,6 +54,11 @@ public class ModifyMenuPanel extends javax.swing.JPanel {
         jLabel1.setText("Modify Menu");
 
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Name");
@@ -113,8 +122,8 @@ public class ModifyMenuPanel extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
             
-            menuItem.setName(txtName.getText());
-            menuItem.setPrice(Double.parseDouble(txtPrice.getText()));
+            menu.setName(txtName.getText());
+            menu.setPrice(Double.parseDouble(txtPrice.getText()));
              
             JOptionPane.showMessageDialog(null, "Menu Updated");
              
@@ -131,6 +140,13 @@ public class ModifyMenuPanel extends javax.swing.JPanel {
           
         cardlayout.previous(userProcessContainer);
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

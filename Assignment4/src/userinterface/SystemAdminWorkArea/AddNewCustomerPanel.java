@@ -162,15 +162,36 @@ public class AddNewCustomerPanel extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         Customer customer = new Customer();
-        
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(txtCustomerName.getText());
         UserAccount user = ecosystem.getUserAccountDirectory().createUserAccount(txtCustomerName.getText(), "admin", employee, new CustomerRole());
-        
-        customer.setUserAccount(user);
+        customer.setUserAccount(user); //remove user from userDirectory too
         customer.setName(txtCustomerName.getText());
         customer.setPhoneNumber(txtPhoneNumber.getText());
         customer.setEmail(txtEmail.getText());
         customer.setAddress(txtAddress.getText());
+        
+        if(txtCustomerName.getText().isEmpty() || txtEmail.getText().isEmpty() || txtPhoneNumber.getText().isEmpty() || txtAddress.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fields cannot be left empty");
+            return;
+        }
+        boolean flag;
+        String email = txtEmail.getText();
+        flag = email.matches("^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$");
+        if(!flag) {
+            JOptionPane.showMessageDialog(null, "Email must be in format of example@Y.com");
+            return;
+        }
+        String phoneNumber = txtPhoneNumber.getText();
+        if(phoneNumber.length() != 10) {
+            JOptionPane.showMessageDialog(null, "Phone Number must be of 10 digits");
+            return;
+        }
+        flag = phoneNumber.matches("^[0-9]+$");
+        if(!flag) {
+            JOptionPane.showMessageDialog(null, "Phone Number must have digits only");
+            return;
+        }
+        
         ecosystem.getCustomerDirectory().getCustomerList().add(customer);
         JOptionPane.showMessageDialog(null, "New Customer Added");
         
