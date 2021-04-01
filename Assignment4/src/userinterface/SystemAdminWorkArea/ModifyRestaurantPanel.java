@@ -10,6 +10,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import Business.EcoSystem;
 
 /**
  *
@@ -29,10 +30,6 @@ public class ModifyRestaurantPanel extends javax.swing.JPanel {
         txtName.setText(this.restaurant.getName());
         txtAdmin.setText(this.restaurant.getAdmin().getUsername());
         
-        txtID.setEnabled(false);
-        txtName.setEnabled(false);
-        txtAdmin.setEnabled(false);
-        btnSave.setEnabled(false);
     }
 
     /**
@@ -52,11 +49,7 @@ public class ModifyRestaurantPanel extends javax.swing.JPanel {
         txtID = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
         txtAdmin = new javax.swing.JTextField();
-        btnModify = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        JErrorID = new javax.swing.JLabel();
-        JErrorName = new javax.swing.JLabel();
-        JErrorAdmin = new javax.swing.JLabel();
 
         lblModifyRestaurant.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
         lblModifyRestaurant.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -78,25 +71,12 @@ public class ModifyRestaurantPanel extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Restaurant Admin");
 
-        btnModify.setText("Modify");
-        btnModify.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModifyActionPerformed(evt);
-            }
-        });
-
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
             }
         });
-
-        JErrorID.setText("JErrorID");
-
-        JErrorName.setText("JErrorNAme");
-
-        JErrorAdmin.setText("JErrorAdmin");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -109,121 +89,67 @@ public class ModifyRestaurantPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
+                        .addContainerGap(122, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnModify, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
-                        .addGap(163, 163, 163)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtID)
+                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                             .addComponent(txtName)
-                            .addComponent(txtAdmin)
-                            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtAdmin))))
+                .addContainerGap(131, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(516, 516, 516)
-                        .addComponent(JErrorName, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(JErrorAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JErrorID, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(77, 77, 77))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(btnBack)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(lblModifyRestaurant)
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addComponent(JErrorID, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addComponent(JErrorName, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(JErrorAdmin)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnModify)
-                    .addComponent(btnSave))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(btnSave)
+                .addGap(74, 74, 74))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
-        // TODO add your handling code here:
-        txtID.setEnabled(true);
-        txtName.setEnabled(true);
-        txtAdmin.setEnabled(true);
-        
-        btnSave.setEnabled(true);
-        btnModify.setEnabled(false);
-    }//GEN-LAST:event_btnModifyActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        if(txtID.getText().trim().isEmpty() &&
-            txtName.getText().trim().isEmpty()&&
-            txtAdmin.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please Enter data to proceed!", "WARNING", JOptionPane.WARNING_MESSAGE);
-            return;
-            } // RestaurantName,SerialNumber,Admin Name are Empty
-         
-         else {
-             JErrorID.setText("");
-             JErrorName.setText("");
-             JErrorAdmin.setText("");
-             boolean error = false;
-            
-             if (txtID.getText().trim().isEmpty()) {
-                JErrorID.setText("Serail Number cannot be empty");
-                error = true;
-             }
+       
+             restaurant.setName(txtName.getText());
+             restaurant.setRestaurantId(txtID.getText());
+             restaurant.getAdmin().setUsername(txtAdmin.getText());
              
-             if(txtName.getText().trim().isEmpty()) {
-                JErrorName.setText("Restaurant Name cannot be empty");
-                error = true;
+             JOptionPane.showMessageDialog(null, "Restaurant modified successfully");
+             
+             userProcessContainer.remove(this);
+            CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
+            Component[] comps = userProcessContainer.getComponents();
+            for (Component comp : comps){
+            if (comp instanceof ManageCustomerFirstPage){
+                System.out.println(comp);
+                ManageCustomerFirstPage panel = (ManageCustomerFirstPage) comp;
+                panel.populateTable();
             }
-             
-              if(txtAdmin.getText().trim().isEmpty()) {
-                JErrorAdmin.setText("Admin Name cannot be empty");
-                error = true;
-            }
-             if (error) {
-                return;
-            }
-             
-             this.restaurant.setName(txtName.getText().trim());
-             this.restaurant.setRestaurantId(txtID.getText().trim());
-             this.restaurant.getAdmin().setUsername(txtAdmin.getText().trim());
-             
-             JOptionPane.showMessageDialog(null, "Updated Restaurant successfully");
-             
-             //Enable/Disable fields accoridngly
-            txtID.setEnabled(false);
-            txtName.setEnabled(false);
-            txtAdmin.setEnabled(false);
-            btnSave.setEnabled(false);
-            btnModify.setEnabled(true);
-         
         }
+          
+        cardlayout.previous(userProcessContainer);
              
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -232,18 +158,14 @@ public class ModifyRestaurantPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[0];
-        //ManageResturantFirstPage panel = (ManageResturantFirstPage) component;
+        SystemAdminWorkAreaJPanel panel = (SystemAdminWorkAreaJPanel) component;
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JErrorAdmin;
-    private javax.swing.JLabel JErrorID;
-    private javax.swing.JLabel JErrorName;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnModify;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -5,10 +5,12 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.DeliveryMan.DeliveryMan;
+import Business.DeliveryMan.DeliveryManDirectory;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Restaurant.Restaurant;
-import Business.Role.AdminRole;
+import Business.Role.DeliverManRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -19,14 +21,17 @@ import javax.swing.JPanel;
  *
  * @author snehaswaroop
  */
-public class AddNewResturantPanel extends javax.swing.JPanel {
+public class AddNewDeliveryManPanel extends javax.swing.JPanel {
+
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-
+    Restaurant restaurant;
+   
     
-    public AddNewResturantPanel(JPanel userProcessContainer, EcoSystem system) {
-        this.userProcessContainer = userProcessContainer;
-        this.ecosystem = system;
+    public AddNewDeliveryManPanel(JPanel upc, Restaurant r, EcoSystem ecosystem) {
+        this.userProcessContainer = upc;
+        this.restaurant = r;
+        this.ecosystem = ecosystem;
         initComponents();
     }
 
@@ -44,14 +49,14 @@ public class AddNewResturantPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
-        txtAdmin = new javax.swing.JTextField();
+        txtPhoneNumber = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Add New Restaurant");
+        jLabel1.setText("Add New Delivery Man");
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -61,13 +66,13 @@ public class AddNewResturantPanel extends javax.swing.JPanel {
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Restaurant ID");
+        jLabel2.setText("Name");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Restaurant Name");
+        jLabel3.setText("Phone Number");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Restaurant Admin");
+        jLabel4.setText("Address");
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -80,83 +85,91 @@ public class AddNewResturantPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(148, Short.MAX_VALUE)
+                        .addContainerGap(138, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtID)
-                            .addComponent(txtName)
-                            .addComponent(txtAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(txtPhoneNumber)
+                            .addComponent(txtAddress))))
+                .addContainerGap(138, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(11, 11, 11)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(btnSave)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        Restaurant restaurant = new Restaurant();
-                
-        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(txtAdmin.getText());
-        UserAccount user = ecosystem.getUserAccountDirectory().createUserAccount(txtAdmin.getText(), "admin", employee, new AdminRole());
-        restaurant.setAdmin(user); //While deleting, make sure to remove user from userDirectory too
-        restaurant.setRestaurantId(txtID.getText());
-        restaurant.setName(txtName.getText());
-        ecosystem.getRestaurantDirectory().getRestaurantList().add(restaurant);
-        JOptionPane.showMessageDialog(null, "New restaurant added");
+        DeliveryMan man = new DeliveryMan();
         
-        //Populate previous screen table and navigate back.
+        //Creating User Account
+        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(txtName.getText());
+        UserAccount user = ecosystem.getUserAccountDirectory().createUserAccount(txtName.getText(), "deliveryAdmin", employee, new DeliverManRole());
+        
+        //Creatng Delivery Man and asociating useraccount
+        man.setUserAccount(user); 
+        man.setName(txtName.getText());
+        man.setPhoneNumber(txtPhoneNumber.getText());
+        man.setAddress(txtAddress.getText());
+        
+        //Adding the Ecosystem - Delivery Man
+        ecosystem.getDeliveryManDirectory().getDeliveryManList().add(man);
+        
+        //Adding Delivery Man to the Restaurant chosen
+        restaurant.getDeliveryManList().add(man);
+        
+        JOptionPane.showMessageDialog(null, "Added Delivery Man for " + restaurant.getName());
+        
+        //Populate previous screen table 
         userProcessContainer.remove(this);
         CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
-        
-         //Restore prev screen's state
-        Component[] comps = userProcessContainer.getComponents();
+        Component[] component = userProcessContainer.getComponents();
 
-          for (Component comp : comps){
-            if (comp instanceof ManageResturantFirstPage){
+          for (Component comp : component){
+            if (comp instanceof ManageDeliveryManFirstPage){
                 System.out.println(comp);
-                ManageResturantFirstPage panel = (ManageResturantFirstPage) comp;
+                ManageDeliveryManFirstPage panel = (ManageDeliveryManFirstPage) comp;
                 panel.populateTable();
+                panel.displayDeliverMenTable(restaurant);
             }
         }
           
-        cardlayout.previous(userProcessContainer);
-    
+         cardlayout.previous(userProcessContainer); 
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -177,8 +190,8 @@ public class AddNewResturantPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtAdmin;
-    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhoneNumber;
     // End of variables declaration//GEN-END:variables
 }

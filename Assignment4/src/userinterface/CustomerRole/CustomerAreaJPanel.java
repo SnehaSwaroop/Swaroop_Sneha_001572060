@@ -6,10 +6,12 @@ package userinterface.CustomerRole;
 
 import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,10 +36,40 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         this.ecosystem = system;
         this.customer = customer;
         //valueLabel.setText(enterprise.getName());
+        valueLabel.setText(this.ecosystem.getName());
         populateRequestTable();
     }
     
     public void populateRequestTable(){
+        
+        DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
+        model.setRowCount(0);
+        //int count = 1;
+        //Supplier supplier = (Supplier)suppComboBox1.getSelectedItem();
+        ArrayList<WorkRequest> wrTable = new ArrayList<WorkRequest>();
+        
+        for (Restaurant r : ecosystem.getRestaurantDirectory().getRestaurantList()) {
+            if(r.getWorkQueue() != null && r.getWorkQueue().getWorkRequestList() != null) {
+                for (WorkRequest wr: r.getWorkQueue().getWorkRequestList()) {
+                    if (wr.getCustomer().equals(customer))
+                       wrTable.add(wr); 
+                }
+            }
+           
+        }
+        
+        if (wrTable != null) {
+            for(WorkRequest wr : wrTable) {
+                Object row[] = new Object[4];
+                row[0] = wr;
+                row[1] = wr.getReceiver();
+                row[2] = wr.getStatus();
+                row[3] = wr.getRequestDate();
+                model.addRow(row); 
+                //count++;
+            }       
+        }
+    
         
     }
 
@@ -150,9 +182,10 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-        
-        
-        
+//        RequestLabTestJPanel panel = new RequestLabTestJPanel(userProcessContainer, userAccount, customer, ecosystem);
+//        userProcessContainer.add("createCustomerWorkRequest", panel);
+//        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);  
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
     private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed

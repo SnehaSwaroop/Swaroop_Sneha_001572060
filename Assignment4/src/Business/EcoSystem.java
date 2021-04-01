@@ -79,7 +79,7 @@ public class EcoSystem extends Organization{
         this.restaurantDirectory = new RestaurantDirectory();
         this.customerDirectory = new CustomerDirectory();
         this.deliveryManDirectory = new DeliveryManDirectory();
-    }
+        }
     
     @Override
     public ArrayList<Role> getSupportedRole() {

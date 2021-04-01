@@ -18,7 +18,7 @@ public class DeliveryManDirectory {
     private ArrayList<DeliveryMan> DeliveryManList;
 
     public DeliveryManDirectory() {
-        this.DeliveryManList = DeliveryManList;
+        this.DeliveryManList = new ArrayList<DeliveryMan>();
     }
     
     public ArrayList<DeliveryMan> getDeliveryManList() {
@@ -28,5 +28,4 @@ public class DeliveryManDirectory {
     public void setDeliveryManList(ArrayList<DeliveryMan> DeliveryManList) {
         this.DeliveryManList = DeliveryManList;
     }
-    
 }

@@ -156,6 +156,7 @@ public class AddNewCustomerPanel extends javax.swing.JPanel {
         SystemAdminWorkAreaJPanel panel = (SystemAdminWorkAreaJPanel) component;
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -165,30 +166,22 @@ public class AddNewCustomerPanel extends javax.swing.JPanel {
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(txtCustomerName.getText());
         UserAccount user = ecosystem.getUserAccountDirectory().createUserAccount(txtCustomerName.getText(), "admin", employee, new CustomerRole());
         
-        
         customer.setUserAccount(user);
-        try {
         customer.setName(txtCustomerName.getText());
         customer.setPhoneNumber(txtPhoneNumber.getText());
         customer.setEmail(txtEmail.getText());
         customer.setAddress(txtAddress.getText());
-        }
-        
-        catch(NullPointerException e) {
         ecosystem.getCustomerDirectory().getCustomerList().add(customer);
         JOptionPane.showMessageDialog(null, "New Customer Added");
-        }
         
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        
-        Component[] comps = userProcessContainer.getComponents();
-
-          for (Component comp : comps){
+        Component[] component = userProcessContainer.getComponents();
+          for (Component comp : component){
             if (comp instanceof ManageCustomerFirstPage){
                 System.out.println(comp);
-                ManageCustomerFirstPage manageP = (ManageCustomerFirstPage) comp;
-                manageP.populateTable();
+                ManageCustomerFirstPage panel = (ManageCustomerFirstPage) comp;
+                panel.populateTable();
             }
         }
         layout.previous(userProcessContainer);

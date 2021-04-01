@@ -12,6 +12,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import Business.Customer.Customer;
 
 /**
  *
@@ -28,7 +29,7 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
         populateTable();
     }
     
-    public void populateTable() {
+     public void populateTable() {
          DefaultTableModel model = (DefaultTableModel)tblRestaurant.getModel();
         model.setRowCount(0);
         //int count = 1;
@@ -38,12 +39,15 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
                 Object row[] = new Object[2];
                 row[0] = r;
                 row[1] = r.getRestaurantId();
+                
+                
                 model.addRow(row); 
                 //count++;
             }       
         }
        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,7 +85,7 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Restaurant Number", "Restaurant Name"
+                "Restaurant Name", "Restaurant Number"
             }
         ));
         jScrollPane1.setViewportView(tblRestaurant);
@@ -119,15 +123,16 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(44, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnAddRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnModifyRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDeleteRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(btnAddRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addComponent(btnModifyRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addComponent(btnDeleteRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,6 +161,7 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
         sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+        
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRestaurantActionPerformed
@@ -164,10 +170,10 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
         userProcessContainer.add("CreateRestaurant", rp);
         CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+       
     }//GEN-LAST:event_btnAddRestaurantActionPerformed
 
     private void btnModifyRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyRestaurantActionPerformed
-        // TODO add your handling code here:
         int selectedRow = tblRestaurant.getSelectedRow();
         
         if (selectedRow >= 0){
@@ -181,11 +187,12 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
         } else {
            JOptionPane.showMessageDialog(null,"Please select a Restaurant to View", "Warning", JOptionPane.WARNING_MESSAGE); 
         }
+
+        
     }//GEN-LAST:event_btnModifyRestaurantActionPerformed
 
     private void btnDeleteRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRestaurantActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblRestaurant.getSelectedRow();
+               int selectedRow = tblRestaurant.getSelectedRow();
         
         if (selectedRow >= 0){
             Restaurant selectedRest = (Restaurant) tblRestaurant.getValueAt(selectedRow, 0);
@@ -200,7 +207,7 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
             populateTable();
         } else {
            JOptionPane.showMessageDialog(null,"Please select a Restaurant to delete", "Warning", JOptionPane.WARNING_MESSAGE); 
-        }   
+        }  
     }//GEN-LAST:event_btnDeleteRestaurantActionPerformed
 
 

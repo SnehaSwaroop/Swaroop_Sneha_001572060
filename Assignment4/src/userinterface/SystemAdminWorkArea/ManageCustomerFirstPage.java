@@ -36,7 +36,7 @@ public class ManageCustomerFirstPage extends javax.swing.JPanel {
         table.setRowCount(0);
         if(ecosystem.getCustomerDirectory().getCustomerList() != null) {
             for (Customer customer : ecosystem.getCustomerDirectory().getCustomerList()) {
-            Object row[] = new Object[3];
+            Object row[] = new Object[4];
             row[0] = customer;
             row[1] = customer.getPhoneNumber();
             row[2] = customer.getEmail();
@@ -116,21 +116,21 @@ public class ManageCustomerFirstPage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(21, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(43, Short.MAX_VALUE)
                         .addComponent(btnAddCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                         .addComponent(btnModifyCustomer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                         .addComponent(btnDeleteCustomer))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(btnBack)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(43, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,9 +139,9 @@ public class ManageCustomerFirstPage extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGap(29, 29, 29)
                 .addComponent(lblManageCustomers)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddCustomer)
                     .addComponent(btnModifyCustomer)
@@ -173,8 +173,8 @@ public class ManageCustomerFirstPage extends javax.swing.JPanel {
             this.ecosystem.getUserAccountDirectory().deleteUser(selectedCustomer.getName());  //Delete the UserAccount recorded associated with the Customer
             //Delete the Customer out from the ecosystem
             this.ecosystem.getCustomerDirectory().getCustomerList().remove(selectedCustomer);
-            JOptionPane.showMessageDialog(null, "Deleted selected customer");
             populateTable();
+            JOptionPane.showMessageDialog(null, "Deleted selected customer");
         }
     }//GEN-LAST:event_btnDeleteCustomerActionPerformed
 

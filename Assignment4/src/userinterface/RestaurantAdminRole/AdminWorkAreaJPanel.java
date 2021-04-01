@@ -3,6 +3,7 @@
 package userinterface.RestaurantAdminRole;
 
 
+import Business.Restaurant.Restaurant;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -13,11 +14,13 @@ import javax.swing.JPanel;
 public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
+    Restaurant restaurant;
     
     /** Creates new form AdminWorkAreaJPanel */
-    public AdminWorkAreaJPanel(JPanel userProcessContainer) {
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, Restaurant r) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.restaurant = r;
       
         //valueLabel.setText();
     }
@@ -32,7 +35,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         userJButton = new javax.swing.JButton();
-        manageEmployeeJButton = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
         manageOrganizationJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
@@ -49,15 +52,15 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 180, -1));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 180, -1));
 
-        manageEmployeeJButton.setText("Manage menu");
-        manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.setText("Manage Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageEmployeeJButtonActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 150, -1));
+        add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 180, 30));
 
         manageOrganizationJButton.setText("Manage Orders");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +68,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageOrganizationJButtonActionPerformed(evt);
             }
         });
-        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
+        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 180, 30));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Restaurant :");
@@ -80,9 +83,12 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_userJButtonActionPerformed
 
-    private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-
-    }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        ManageMenuPanel mm =  new ManageMenuPanel(userProcessContainer, restaurant);
+        userProcessContainer.add("manageMenu", mm);
+        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        layout.next(userProcessContainer); 
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
 
@@ -90,9 +96,9 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMenu;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JButton manageOrganizationJButton;
     private javax.swing.JButton userJButton;
     private javax.swing.JLabel valueLabel;

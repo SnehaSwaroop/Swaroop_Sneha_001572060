@@ -30,15 +30,15 @@ public class CustomerDirectory {
     }
 
     
-    public Customer getCustomerByUserAccount(UserAccount user) {
-        Customer customer = null;
+    public Customer getCustomerByUserAccount(UserAccount ua) {
+        Customer cust = null;
         
         for (Customer c: customerList) {
-            if (c.getUserAccount().equals(user))
-                customer = c;
+            if (c.getUserAccount().equals(ua))
+                cust = c;
         }
         
-        return customer;
+        return cust;
     }
 }
     

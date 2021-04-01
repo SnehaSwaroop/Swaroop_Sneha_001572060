@@ -17,8 +17,9 @@ public class DeliveryMan {
     
     private String name;
     private String phoneNumber;
+    private String address;
     private WorkRequest workRequest;
-    private UserAccount userAccountLink;
+    private UserAccount userAccount;
 
     public String getName() {
         return name;
@@ -36,6 +37,15 @@ public class DeliveryMan {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+
     public WorkRequest getWorkRequest() {
         return workRequest;
     }
@@ -44,13 +54,16 @@ public class DeliveryMan {
         this.workRequest = workRequest;
     }
 
-    public UserAccount getUserAccountLink() {
-        return userAccountLink;
+    public UserAccount getUserAccount() {
+        return userAccount;
     }
 
-    public void setUserAccountLink(UserAccount userAccountLink) {
-        this.userAccountLink = userAccountLink;
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
-
     
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

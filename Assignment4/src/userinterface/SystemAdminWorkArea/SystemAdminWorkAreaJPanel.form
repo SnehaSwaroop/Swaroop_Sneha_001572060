@@ -87,12 +87,10 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnManageDeliveryMan" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnManageRestaurant" max="32767" attributes="0"/>
-                                      <Component id="btnManageCustomer" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnManageRestaurant" max="32767" attributes="0"/>
+                                  <Component id="btnManageCustomer" max="32767" attributes="0"/>
+                                  <Component id="btnManageDeliveryMan" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

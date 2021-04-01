@@ -6,6 +6,7 @@
 package Business.Restaurant;
 
 
+import Business.DeliveryMan.DeliveryMan;
 import java.util.ArrayList;
 import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
@@ -17,7 +18,6 @@ import Business.UserAccount.UserAccount;
 public class RestaurantDirectory {
     
     private ArrayList<Restaurant> restaurantList;
-   
 
     public ArrayList<Restaurant> getRestaurantList() {
         return restaurantList;
@@ -32,14 +32,23 @@ public class RestaurantDirectory {
     }
     
     public Restaurant getRestaurantBasedOnAdminName(UserAccount ua) {
-        Restaurant rest = null;
-        
+        Restaurant restaurant = null;
         for (Restaurant r : restaurantList) {
             if(r.getAdmin().equals(ua))
-                rest = r;
+                restaurant = r;
         }
-        
-        return rest;
+        return restaurant;
+    }
+    
+    public Restaurant getRestaurantBasedonDelManName(UserAccount ua) {
+        Restaurant restaurant = null;
+        for (Restaurant r : restaurantList) {
+            for(DeliveryMan dm: r.getDeliveryManList()) {
+               if(dm.getUserAccount().equals(ua))
+                restaurant = r; 
+            }  
+        }
+        return restaurant;
     }
     
     
