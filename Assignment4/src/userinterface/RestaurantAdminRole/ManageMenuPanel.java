@@ -26,28 +26,24 @@ public class ManageMenuPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageMenu
      */
-    public ManageMenuPanel(JPanel upc, Restaurant r) {
+    public ManageMenuPanel(JPanel userProcessContainer, Restaurant restaurant) {
         initComponents();
-        this.userProcessContainer = upc;
-        this.restaurant = r;
-         populateTable();
+        this.userProcessContainer = userProcessContainer;
+        this.restaurant = restaurant;
+        populateTable();
     }
     
     public void populateTable() {
          DefaultTableModel model = (DefaultTableModel)tblMenu.getModel();
         model.setRowCount(0);
-        //int count = 1;
-        //Supplier supplier = (Supplier)suppComboBox1.getSelectedItem();
         if (restaurant.getMenu() != null) {
-            for(Menu m : restaurant.getMenu()) {
+            for(Menu menu : restaurant.getMenu()) {
                 Object row[] = new Object[2];
-                row[0] = m;
-                row[1] = m.getPrice();
+                row[0] = menu;
+                row[1] = menu.getPrice();
                 model.addRow(row); 
-                //count++;
             }       
         }
-       
     }
 
     /**
@@ -162,34 +158,31 @@ public class ManageMenuPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblMenu.getSelectedRow();
-        if (selectedRow >= 0){
-            Menu selectedMenuItem = (Menu) tblMenu.getValueAt(selectedRow, 0);
-            //Delete the MenuItem out from the restaurant
-            this.restaurant.getMenu().remove(selectedMenuItem);
+        int selectedRowIndex = tblMenu.getSelectedRow();
+        if (selectedRowIndex<0){
+            JOptionPane.showMessageDialog(null,"Please select an item to delete", "Warning", JOptionPane.WARNING_MESSAGE); 
+        }
+        else {
+            Menu selectedMenuItem = (Menu) tblMenu.getValueAt(selectedRowIndex, 0);
+            this.restaurant.getMenu().remove(selectedMenuItem);                 //Delete the MenuItem from the restaurant
             JOptionPane.showMessageDialog(null, "Deleted selected Item from Menu");
             populateTable();
-        } else {
-           JOptionPane.showMessageDialog(null,"Please select a Menu Item to delete", "Warning", JOptionPane.WARNING_MESSAGE); 
-        }    
-        
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblMenu.getSelectedRow();
-        
-        if (selectedRow >= 0){
-            Menu selectedMenuItem = (Menu) tblMenu.getValueAt(selectedRow, 0);
-
-            ModifyMenuPanel vm = new ModifyMenuPanel(userProcessContainer, selectedMenuItem);
-            userProcessContainer.add("ViewMenu", vm);
+        int selectedRowIndex = tblMenu.getSelectedRow();
+        if (selectedRowIndex<0){
+            JOptionPane.showMessageDialog(null,"Please select an Item to Modify", "Warning", JOptionPane.WARNING_MESSAGE); 
+        }
+        else {
+            Menu selectedMenuItem = (Menu) tblMenu.getValueAt(selectedRowIndex, 0);
+            ModifyMenuPanel panel = new ModifyMenuPanel(userProcessContainer, selectedMenuItem);
+            userProcessContainer.add("ViewMenu", panel);
             CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
             layout.next(userProcessContainer);
-            
-        } else {
-           JOptionPane.showMessageDialog(null,"Please select a Menu Item to View", "Warning", JOptionPane.WARNING_MESSAGE); 
-        }
+        } 
     }//GEN-LAST:event_btnModifyActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

@@ -137,7 +137,7 @@ public class AddNewDeliveryManPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         DeliveryMan man = new DeliveryMan();
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(txtName.getText());             //Creating User Account
-        UserAccount user = ecosystem.getUserAccountDirectory().createUserAccount(txtName.getText(), "admin", employee, new DeliverManRole());
+        UserAccount user = ecosystem.getUserAccountDirectory().createUser(txtName.getText(), "admin", employee, new DeliverManRole());
         //Creating Delivery Man and useraccount
         man.setUserAccount(user); 
         man.setName(txtName.getText());

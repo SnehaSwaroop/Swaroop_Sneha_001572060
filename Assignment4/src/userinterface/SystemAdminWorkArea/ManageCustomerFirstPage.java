@@ -81,7 +81,15 @@ public class ManageCustomerFirstPage extends javax.swing.JPanel {
             new String [] {
                 "Customer Name", "Phone Number", "E-mail", "Address"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(CustomerData);
 
         btnAddCustomer.setText("Add Customer");

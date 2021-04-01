@@ -24,9 +24,9 @@ public class AddNewMenuPanel extends javax.swing.JPanel {
     /**
      * Creates new form AddNewMenuPanel
      */
-    public AddNewMenuPanel(JPanel upc, Restaurant r) {
-        this.userProcessContainer = upc;
-        this.restaurant = r;
+    public AddNewMenuPanel(JPanel userprocesscontainer, Restaurant restaurant) {
+        this.userProcessContainer = userprocesscontainer;
+        this.restaurant = restaurant;
         initComponents();
     }
 
@@ -129,24 +129,27 @@ public class AddNewMenuPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        Menu m = new Menu();
-        m.setName(txtName.getText());
-        m.setPrice(Double.parseDouble(txtPrice.getText()));
-        restaurant.getMenu().add(m);
-        JOptionPane.showMessageDialog(null, "Created Menu Item successfully");
-        //Populate previous screen table and navigate back.
-        userProcessContainer.remove(this);
+        Menu menu = new Menu();
+        menu.setName(txtName.getText());
+        menu.setPrice(Double.parseDouble(txtPrice.getText()));
+        
+        if(txtName.getText().isEmpty() || txtPrice.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fields cannot be left empty");
+            return;
+        }
+        
+        restaurant.getMenu().add(menu);
+        JOptionPane.showMessageDialog(null, "Item Added in menu");
+        userProcessContainer.remove(this);                                      //Populate previous screen
         CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
-         //        Restore prev screen's state
-        Component[] comps = userProcessContainer.getComponents();
-          for (Component comp : comps){
+        Component[] component = userProcessContainer.getComponents();           //Restore previous screen 
+          for (Component comp : component){
             if (comp instanceof ManageMenuPanel){
                 System.out.println(comp);
                 ManageMenuPanel panel = (ManageMenuPanel) comp;
                 panel.populateTable();
             }
         }
-          
         cardlayout.previous(userProcessContainer);
     }//GEN-LAST:event_btnAddActionPerformed
 

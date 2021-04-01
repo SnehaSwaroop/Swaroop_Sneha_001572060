@@ -34,10 +34,10 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     ArrayList<Order> orderList;
     
-    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, Customer customer, EcoSystem ecosystem) {
+    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount useraccount, Customer customer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.userAccount = account;
+        this.userAccount = useraccount;
         this.userProcessContainer = userProcessContainer;
         this.customer = customer;
         this.ecosystem = ecosystem;
@@ -52,11 +52,10 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         if (ecosystem.getRestaurantDirectory().getRestaurantList() != null) {
-            for(Restaurant r : ecosystem.getRestaurantDirectory().getRestaurantList()) {
+            for(Restaurant restaurant : ecosystem.getRestaurantDirectory().getRestaurantList()) {
                 Object row[] = new Object[1];
-                row[0] = r;
+                row[0] = restaurant;
                 model.addRow(row); 
-                
             }       
         }
     }
@@ -71,10 +70,8 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 row[0] = m;
                 row[1] = m.getPrice();
                 model.addRow(row); 
-                
             }       
         }
-       
     }
     
     public void populateOrderTable() {
@@ -82,8 +79,6 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
             double totalPrice = 0;
             
             model.setRowCount(0);
-            //int count = 1;
-            //Supplier supplier = (Supplier)suppComboBox1.getSelectedItem();
             if (orderList != null) {
                 for(Order order : orderList) {
                     Object row[] = new Object[2];
@@ -91,10 +86,8 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                     row[1] = order.getPrice();
                     totalPrice += order.getPrice();
                     model.addRow(row); 
-                    //count++;
                 }       
             }
-            
             lblTotal.setText("Your total is: $" + totalPrice);
     }
 
@@ -212,7 +205,15 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
             new String [] {
                 "Restaurant Name"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblRestaurant);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 160, 110));
@@ -227,7 +228,15 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
             new String [] {
                 "Dish Name", "Price"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tblOrder);
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 400, 100));
@@ -305,7 +314,6 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         for(Order o : orderList) {
             totalPrice = totalPrice + o.getPrice();
             message += o.getName() + ",";
-            //count++;
         } 
         message += "Total: $" + totalPrice;  
         
@@ -313,19 +321,14 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         request.setStatus("New");
         request.setSender(userAccount);
         request.setCustomer(customer);
-        request.setComments(txtComments.getText());
+        request.setComments(txtComments.getText().trim());
         
         selectedRestaurant.getWorkQueue().getWorkRequestList().add(request);
-        
         JOptionPane.showMessageDialog(null, "Your Order is Placed");
         
-        //Populate previous screen table and navigate back.
         userProcessContainer.remove(this);
         CardLayout cardlayout = (CardLayout) userProcessContainer.getLayout();
-        
-         //        Restore prev screen's state
         Component[] component = userProcessContainer.getComponents();
-
           for (Component comp : component){
             if (comp instanceof CustomerAreaJPanel){
                 System.out.println(comp);
@@ -333,7 +336,6 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 panel.populateRequestTable();
             }
         }
-          
         cardlayout.previous(userProcessContainer);
     }//GEN-LAST:event_BtnPlaceOrderActionPerformed
 

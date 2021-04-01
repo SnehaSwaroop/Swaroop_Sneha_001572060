@@ -21,16 +21,11 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     WorkRequest workRequest;
-    /**
-     * Creates new form ProcessWorkRequestJPanel
-     */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer, WorkRequest wr) {
+    
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, WorkRequest workRequest) {
         this.userProcessContainer = userProcessContainer;
-        this.workRequest = wr;
-        
+        this.workRequest = workRequest;
         initComponents();
-        
-        txtResult.setText(this.workRequest.getMessage());
     }
 
     /**
@@ -43,8 +38,8 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         submitJButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        txtResult = new javax.swing.JTextField();
+        lblStatus = new javax.swing.JLabel();
+        txtStatus = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
 
         submitJButton.setText("Save");
@@ -54,7 +49,8 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Result");
+        lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStatus.setText("Status");
 
         backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -68,32 +64,32 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(backJButton)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(187, 187, 187)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(submitJButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
+                .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(backJButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
+                .addGap(30, 30, 30)
                 .addComponent(backJButton)
-                .addGap(64, 64, 64)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addComponent(submitJButton)
-                .addGap(52, 52, 52))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -102,18 +98,15 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        DeliveryManWorkAreaJPanel dwjp = (DeliveryManWorkAreaJPanel) component;
-        dwjp.populateTable();
-        
+        DeliveryManWorkAreaJPanel panel = (DeliveryManWorkAreaJPanel) component;
+        panel.populateTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-//        request.setTestResult(txtResult.getText());
-//        request.setStatus("Completed");
-
-    if (txtResult.getText().equalsIgnoreCase("Delivered")) {
+        this.workRequest.setStatus(txtStatus.getText());
+        if (txtStatus.getText().equalsIgnoreCase("Delivered")) {
         JOptionPane.showMessageDialog(null, "Order Delivered");
         
         userProcessContainer.remove(this);
@@ -121,7 +114,6 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         Component component = componentArray[componentArray.length - 1];
         DeliveryManWorkAreaJPanel panel = (DeliveryManWorkAreaJPanel) component;
         panel.populateTable();
-        
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }
@@ -130,8 +122,8 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JButton submitJButton;
-    private javax.swing.JTextField txtResult;
+    private javax.swing.JTextField txtStatus;
     // End of variables declaration//GEN-END:variables
 }

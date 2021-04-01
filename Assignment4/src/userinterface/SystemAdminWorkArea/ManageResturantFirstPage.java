@@ -80,7 +80,15 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
             new String [] {
                 "Restaurant Name", "Restaurant Number"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblRestaurant);
 
         btnAddRestaurant.setText("Add Restaurant");

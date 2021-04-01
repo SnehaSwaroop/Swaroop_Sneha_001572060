@@ -23,12 +23,12 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    private EcoSystem system;
+    private EcoSystem ecosystem;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
     public MainJFrame() {
         initComponents();
-        system = dB4OUtil.retrieveSystem();
+        ecosystem = dB4OUtil.retrieveSystem();
         this.setSize(1680, 1050);
     }
 
@@ -128,7 +128,7 @@ public class MainJFrame extends javax.swing.JFrame {
         char[] passwordCharArray = passwordField.getPassword();
         String password = String.valueOf(passwordCharArray);
         
-        UserAccount userAccount=system.getUserAccountDirectory().authenticateUser(userName, password);
+        UserAccount userAccount=ecosystem.getUserAccountDirectory().authenticateUser(userName, password);
         //Enterprise inEnterprise=null;
         Organization inOrganization=null;
         
@@ -144,7 +144,7 @@ public class MainJFrame extends javax.swing.JFrame {
         passwordField.setEnabled(false);
         }
         
-        JPanel panel = userAccount.getRole().createWorkArea(container, userAccount, system);
+        JPanel panel = userAccount.getRole().createWorkArea(container, userAccount, ecosystem);
         container.add("LoggedInScreen", panel);
         CardLayout layout = (CardLayout)this.container.getLayout();
         layout.next(container);
@@ -165,7 +165,7 @@ public class MainJFrame extends javax.swing.JFrame {
         container.add("blank", blankJP);
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
-        dB4OUtil.storeSystem(system);
+        dB4OUtil.storeSystem(ecosystem);
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     /**

@@ -271,7 +271,7 @@ public class ManageDeliveryManFirstPage extends javax.swing.JPanel {
         }
         else {
             DeliveryMan selectedDeliveryMan = (DeliveryMan) tblDeliveryMan.getValueAt(selectedRow, 0);
-            Restaurant restaurant = this.ecosystem.getRestaurantDirectory().getRestaurantBasedonDelManName(selectedDeliveryMan.getUserAccount());       //Find restaurant of Delivery Man
+            Restaurant restaurant = this.ecosystem.getRestaurantDirectory().getRestaurantByDeliveryMan(selectedDeliveryMan.getUserAccount());       //Find restaurant of Delivery Man
             restaurant.getDeliveryManList().remove(selectedDeliveryMan);        //Delete deliveryman account from Restaurant
             this.ecosystem.getDeliveryManDirectory().getDeliveryManList().remove(selectedDeliveryMan);      //Delete DeliveryMan account from Ecosystem
             this.ecosystem.getUserAccountDirectory().deleteUser(selectedDeliveryMan.getUserAccount().getUsername());    //Delete User Account of Delivery man

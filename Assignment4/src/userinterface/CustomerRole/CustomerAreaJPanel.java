@@ -29,13 +29,12 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, Customer customer) {
+    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, EcoSystem ecosystem, Customer customer) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.userAccount = account;
-        this.ecosystem = system;
+        this.userAccount = useraccount;
+        this.ecosystem = ecosystem;
         this.customer = customer;
-        //valueLabel.setText(enterprise.getName());
         valueLabel.setText(this.ecosystem.getName());
         populateRequestTable();
     }
@@ -44,35 +43,28 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         
         DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
         model.setRowCount(0);
-        //int count = 1;
-        //Supplier supplier = (Supplier)suppComboBox1.getSelectedItem();
-        ArrayList<WorkRequest> wrTable = new ArrayList<WorkRequest>();
-        
-        for (Restaurant r : ecosystem.getRestaurantDirectory().getRestaurantList()) {
-            if(r.getWorkQueue() != null && r.getWorkQueue().getWorkRequestList() != null) {
-                for (WorkRequest wr: r.getWorkQueue().getWorkRequestList()) {
-                    if (wr.getCustomer().equals(customer))
-                       wrTable.add(wr); 
+        ArrayList<WorkRequest> requestTable = new ArrayList<WorkRequest>();
+        for (Restaurant restaurant : ecosystem.getRestaurantDirectory().getRestaurantList()) {
+            if(restaurant.getWorkQueue() != null && restaurant.getWorkQueue().getWorkRequestList() != null) {
+                for (WorkRequest request: restaurant.getWorkQueue().getWorkRequestList()) {
+                    if (request.getCustomer().equals(customer))
+                       requestTable.add(request); 
                 }
             }
-           
         }
         
-        if (wrTable != null) {
-            for(WorkRequest wr : wrTable) {
-                Object row[] = new Object[4];
-                row[0] = wr;
-                row[1] = wr.getReceiver();
-                row[2] = wr.getStatus();
-                row[3] = wr.getRequestDate();
+        if (requestTable != null) {
+            for(WorkRequest request : requestTable) {
+                Object row[] = new Object[5];
+                row[0] = request;
+                row[1] = request.getReceiver();
+                row[2] = request.getStatus();
+                row[3] = request.getRequestDate();
+                row[4] = request.getComments();
                 model.addRow(row); 
-                //count++;
             }       
         }
-    
-        
     }
-
     
     /**
      * This method is called from within the constructor to initialize the form.

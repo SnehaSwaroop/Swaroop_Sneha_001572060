@@ -124,7 +124,6 @@ public class ModifyMenuPanel extends javax.swing.JPanel {
             
             menu.setName(txtName.getText());
             menu.setPrice(Double.parseDouble(txtPrice.getText()));
-             
             JOptionPane.showMessageDialog(null, "Menu Updated");
              
             userProcessContainer.remove(this);
@@ -137,7 +136,6 @@ public class ModifyMenuPanel extends javax.swing.JPanel {
                 panel.populateTable();
             }
         }
-          
         cardlayout.previous(userProcessContainer);
     }//GEN-LAST:event_btnSaveActionPerformed
 

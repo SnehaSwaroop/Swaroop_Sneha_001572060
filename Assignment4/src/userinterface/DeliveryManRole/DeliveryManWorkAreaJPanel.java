@@ -32,42 +32,33 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, Restaurant r) {
+    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, EcoSystem business, Restaurant restaurant) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.userAccount = account;
+        this.userAccount = useraccount;
         this.business = business;
-        this.restaurant = r;
+        this.restaurant = restaurant;
         populateTable();
     }
     
     public void populateTable(){
-        DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
-        model.setRowCount(0);
-        //int count = 1;
-        //Supplier supplier = (Supplier)suppComboBox1.getSelectedItem();
+        DefaultTableModel table = (DefaultTableModel)tblWorkRequest.getModel();
+        table.setRowCount(0);
         if (restaurant.getWorkQueue().getWorkRequestList() != null) {
-            for(WorkRequest wr : restaurant.getWorkQueue().getWorkRequestList()) {
-                
-                if (wr.getReceiver() != null && wr.getReceiver().equals(userAccount)) {
+            for(WorkRequest request : restaurant.getWorkQueue().getWorkRequestList()) {
+                if (request.getReceiver() != null && request.getReceiver().equals(userAccount)) {
                     Object row[] = new Object[5];
-                    row[0] = wr;
-                    row[1] = wr.getSender();
-                    row[2] = wr.getStatus();
-                    row[3] = wr.getRequestDate();
-                    row[4] = wr.getComments();
-                    model.addRow(row);
-                    //count++;
+                    row[0] = request;
+                    row[1] = request.getSender();
+                    row[2] = request.getStatus();
+                    row[3] = request.getRequestDate();
+                    row[4] = request.getComments();
+                    table.addRow(row);
                 }
-               
             }       
         }
-    
     }
-        
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,13 +69,13 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
+        tblWorkRequest = new javax.swing.JTable();
         processJButton = new javax.swing.JButton();
         refreshJButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -110,7 +101,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(workRequestJTable);
+        jScrollPane1.setViewportView(tblWorkRequest);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 650, 96));
 
@@ -133,11 +124,9 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
         
-        int selectedRow = workRequestJTable.getSelectedRow();
-         
-         if(selectedRow >=0 ) {
-            WorkRequest selectedOrder = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
-            
+        int selectedRowIndex = tblWorkRequest.getSelectedRow();
+         if(selectedRowIndex >=0 ) {
+            WorkRequest selectedOrder = (WorkRequest) tblWorkRequest.getValueAt(selectedRowIndex, 0);
             if(selectedOrder.getStatus().equals("Delivered")) {
                  JOptionPane.showMessageDialog(null,"Order already completed", "Warning", JOptionPane.WARNING_MESSAGE); 
             }
@@ -160,6 +149,6 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton processJButton;
     private javax.swing.JButton refreshJButton;
-    private javax.swing.JTable workRequestJTable;
+    private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
 }

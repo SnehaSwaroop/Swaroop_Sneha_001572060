@@ -19,9 +19,9 @@ import javax.swing.JPanel;
 public class AdminRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount useraccount, EcoSystem business) {
         //Find the restaurant for the Admin association and add it to the work area
-        Restaurant restaurant = business.getRestaurantDirectory().getRestaurantBasedOnAdminName(account);
+        Restaurant restaurant = business.getRestaurantDirectory().getRestaurantByAdmin(useraccount);
         
         return new AdminWorkAreaJPanel(userProcessContainer, restaurant);
     }

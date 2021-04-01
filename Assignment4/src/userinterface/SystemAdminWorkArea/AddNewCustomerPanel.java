@@ -163,7 +163,7 @@ public class AddNewCustomerPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Customer customer = new Customer();
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(txtCustomerName.getText());
-        UserAccount user = ecosystem.getUserAccountDirectory().createUserAccount(txtCustomerName.getText(), "admin", employee, new CustomerRole());
+        UserAccount user = ecosystem.getUserAccountDirectory().createUser(txtCustomerName.getText(), "admin", employee, new CustomerRole());
         customer.setUserAccount(user); //remove user from userDirectory too
         customer.setName(txtCustomerName.getText());
         customer.setPhoneNumber(txtPhoneNumber.getText());

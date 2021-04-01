@@ -132,7 +132,7 @@ public class AddNewResturantPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Restaurant restaurant = new Restaurant();
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(txtAdmin.getText());
-        UserAccount user = ecosystem.getUserAccountDirectory().createUserAccount(txtAdmin.getText(), "admin", employee, new AdminRole());
+        UserAccount user = ecosystem.getUserAccountDirectory().createUser(txtAdmin.getText(), "admin", employee, new AdminRole());
         restaurant.setAdmin(user);                                              //remove user from userDirectory too
         restaurant.setRestaurantId(txtID.getText());
         restaurant.setName(txtName.getText());

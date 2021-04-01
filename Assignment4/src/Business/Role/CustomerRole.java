@@ -21,9 +21,9 @@ public class CustomerRole extends Role{
     
    
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        Customer customer = business.getCustomerDirectory().getCustomerByUserAccount(account);
-        return new CustomerAreaJPanel(userProcessContainer, account, business, customer);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount useraccount, EcoSystem business) {
+        Customer customer = business.getCustomerDirectory().getCustomerByUserAccount(useraccount);
+        return new CustomerAreaJPanel(userProcessContainer, useraccount, business, customer);
     }
     
     

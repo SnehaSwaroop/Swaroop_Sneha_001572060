@@ -31,7 +31,7 @@ public class RestaurantDirectory {
         restaurantList=new ArrayList<Restaurant>();
     }
     
-    public Restaurant getRestaurantBasedOnAdminName(UserAccount ua) {
+    public Restaurant getRestaurantByAdmin(UserAccount ua) {
         Restaurant restaurant = null;
         for (Restaurant r : restaurantList) {
             if(r.getAdmin().equals(ua))
@@ -40,7 +40,7 @@ public class RestaurantDirectory {
         return restaurant;
     }
     
-    public Restaurant getRestaurantBasedonDelManName(UserAccount ua) {
+    public Restaurant getRestaurantByDeliveryMan(UserAccount ua) {
         Restaurant restaurant = null;
         for (Restaurant r : restaurantList) {
             for(DeliveryMan dm: r.getDeliveryManList()) {
