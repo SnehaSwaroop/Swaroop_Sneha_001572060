@@ -126,15 +126,15 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRowIndex = tblWorkRequest.getSelectedRow();
          if(selectedRowIndex >=0 ) {
             WorkRequest selectedOrder = (WorkRequest) tblWorkRequest.getValueAt(selectedRowIndex, 0);
-            if(selectedOrder.getStatus().equalsIgnoreCase("Delivered")) {
-                 JOptionPane.showMessageDialog(null,"Order already delivered", "Warning", JOptionPane.WARNING_MESSAGE); 
-            }
-            else {
+//            if(selectedOrder.getStatus().equalsIgnoreCase("Delivered")) {
+//                 JOptionPane.showMessageDialog(null,"Order already delivered", "Warning", JOptionPane.WARNING_MESSAGE); 
+//            }
+//            else {
                 ProcessWorkRequestJPanel panel = new ProcessWorkRequestJPanel(userProcessContainer, selectedOrder);
                 userProcessContainer.add("ProcessWorkRequest", panel);
                 CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
-            }
+//            }
          }else {
            JOptionPane.showMessageDialog(null,"Please select an order to proceed", "Warning", JOptionPane.WARNING_MESSAGE); 
         } 

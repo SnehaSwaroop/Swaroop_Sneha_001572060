@@ -29,15 +29,13 @@ public class CustomerDirectory {
         this.customerList = customerList;
     }
     
-    public Customer getCustomerByUserAccount(UserAccount ua) {
-        Customer cust = null;
-        
+    public Customer getCustomerByUserAccount(UserAccount user) {
+        Customer customer = null;
         for (Customer c: customerList) {
-            if (c.getUserAccount().equals(ua))
-                cust = c;
+            if (c.getUserAccount().equals(user))
+                customer = c;
         }
-        
-        return cust;
+        return customer;
     }
 }
     

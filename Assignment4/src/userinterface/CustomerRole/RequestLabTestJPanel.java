@@ -226,7 +226,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Dish Name", "Price"
+                "Item", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -247,7 +247,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 btnRemoveItemActionPerformed(evt);
             }
         });
-        add(btnRemoveItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 130, 30));
+        add(btnRemoveItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 130, 30));
         add(txtComments, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 450, 30));
 
         jLabel3.setText("Comments");

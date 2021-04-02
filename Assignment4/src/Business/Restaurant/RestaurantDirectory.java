@@ -31,25 +31,23 @@ public class RestaurantDirectory {
         restaurantList=new ArrayList<Restaurant>();
     }
     
-    public Restaurant getRestaurantByAdmin(UserAccount ua) {
+    public Restaurant getRestaurantByAdmin(UserAccount user) {
         Restaurant restaurant = null;
         for (Restaurant r : restaurantList) {
-            if(r.getAdmin().equals(ua))
+            if(r.getAdmin().equals(user))
                 restaurant = r;
         }
         return restaurant;
     }
     
-    public Restaurant getRestaurantByDeliveryMan(UserAccount ua) {
+    public Restaurant getRestaurantByDeliveryMan(UserAccount user) {
         Restaurant restaurant = null;
         for (Restaurant r : restaurantList) {
-            for(DeliveryMan dm: r.getDeliveryManList()) {
-               if(dm.getUserAccount().equals(ua))
+            for(DeliveryMan man: r.getDeliveryManList()) {
+               if(man.getUserAccount().equals(user))
                 restaurant = r; 
             }  
         }
         return restaurant;
     }
-    
-    
 }

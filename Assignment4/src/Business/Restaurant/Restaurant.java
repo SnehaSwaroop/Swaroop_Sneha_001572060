@@ -19,7 +19,7 @@ public class Restaurant {
     
     private String name;
     private UserAccount admin;
-    private String restaurantId;
+    private String restaurantAddress;
     private ArrayList<Menu> menu;
     private WorkQueue workQueue;
     private ArrayList<DeliveryMan> deliveryManList;
@@ -47,12 +47,12 @@ public class Restaurant {
         this.admin = admin;
     }
 
-    public String getRestaurantId() {
-        return restaurantId;
+    public String getRestaurantAddress() {
+        return restaurantAddress;
     }
 
-    public void setRestaurantId(String restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
     }
 
     public ArrayList<Menu> getMenu() {

@@ -24,8 +24,6 @@ public class UserAccount {
         workQueue = new WorkQueue();
     }
     
-    
-    
     public String getUsername() {
         return username;
     }
@@ -61,8 +59,6 @@ public class UserAccount {
     public WorkQueue getWorkQueue() {
         return workQueue;
     }
-
-    
     
     @Override
     public String toString() {

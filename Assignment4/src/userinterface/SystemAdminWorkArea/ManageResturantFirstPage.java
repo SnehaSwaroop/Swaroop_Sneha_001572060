@@ -36,7 +36,7 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
             for(Restaurant restaurant : ecosystem.getRestaurantDirectory().getRestaurantList()) {
                 Object row[] = new Object[2];
                 row[0] = restaurant;
-                row[1] = restaurant.getRestaurantId();
+                row[1] = restaurant.getRestaurantAddress();
                 model.addRow(row); 
             }       
         }
@@ -78,7 +78,7 @@ public class ManageResturantFirstPage extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Restaurant Name", "Restaurant Number"
+                "Restaurant Name", "Restaurant Address"
             }
         ) {
             boolean[] canEdit = new boolean [] {
