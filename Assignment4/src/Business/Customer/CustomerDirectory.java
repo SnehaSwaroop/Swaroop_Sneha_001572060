@@ -28,7 +28,6 @@ public class CustomerDirectory {
     public void setCustomerList(ArrayList<Customer> customerList) {
         this.customerList = customerList;
     }
-
     
     public Customer getCustomerByUserAccount(UserAccount ua) {
         Customer cust = null;

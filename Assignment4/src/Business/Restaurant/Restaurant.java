@@ -22,9 +22,6 @@ public class Restaurant {
     private String restaurantId;
     private ArrayList<Menu> menu;
     private WorkQueue workQueue;
-    private int seats;
-    private String cuisineType;
-    private int cash;
     private ArrayList<DeliveryMan> deliveryManList;
 
     public Restaurant() {
@@ -81,31 +78,6 @@ public class Restaurant {
     public void setDeliveryManList(ArrayList<DeliveryMan> deliveryManList) {
         this.deliveryManList = deliveryManList;
     }
-
-    public int getSeats() {
-        return seats;
-    }
-
-    public void setSeats(int seats) {
-        this.seats = seats;
-    }
-
-    public String getCuisineType() {
-        return cuisineType;
-    }
-
-    public void setCuisineType(String cuisineType) {
-        this.cuisineType = cuisineType;
-    }
-
-    public int getCash() {
-        return cash;
-    }
-
-    public void setCash(int cash) {
-        this.cash = cash;
-    }
-    
 
     @Override
     public String toString() {
