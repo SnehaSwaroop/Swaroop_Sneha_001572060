@@ -34,13 +34,13 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     ArrayList<Order> orderList;
     
-    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount useraccount, Customer customer, EcoSystem ecosystem) {
+    public RequestLabTestJPanel(JPanel userprocesscontainer, UserAccount useraccount, Customer cust, EcoSystem ecoSystem) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userprocesscontainer;
         this.userAccount = useraccount;
-        this.userProcessContainer = userProcessContainer;
-        this.customer = customer;
-        this.ecosystem = ecosystem;
+        this.userProcessContainer = userprocesscontainer;
+        this.customer = cust;
+        this.ecosystem = ecoSystem;
         this.orderList = new ArrayList<Order>();
         valueLabel.setText(this.ecosystem.getName());
         
@@ -65,10 +65,10 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         if (rest.getMenu() != null) {
-            for(Menu m : rest.getMenu()) {
+            for(Menu menu : rest.getMenu()) {
                 Object row[] = new Object[2];
-                row[0] = m;
-                row[1] = m.getPrice();
+                row[0] = menu;
+                row[1] = menu.getPrice();
                 model.addRow(row); 
             }       
         }
@@ -270,36 +270,33 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     private void btnViewMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewMenuActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRestaurant.getSelectedRow();
-
-        if (selectedRow >= 0){
-            Restaurant selectedRestaurant = (Restaurant) tblRestaurant.getValueAt(selectedRow, 0);
-           populateMenuTable(selectedRestaurant);
-        } else {
-           JOptionPane.showMessageDialog(null,"Please select a Restaurant", "Warning", JOptionPane.WARNING_MESSAGE); 
+        if (selectedRow<0){
+            JOptionPane.showMessageDialog(null,"Please select a Restaurant", "Warning", JOptionPane.WARNING_MESSAGE); 
         } 
-       
+        else {
+            Restaurant selectedRestaurant = (Restaurant) tblRestaurant.getValueAt(selectedRow, 0);
+            populateMenuTable(selectedRestaurant);
+        }
     }//GEN-LAST:event_btnViewMenuActionPerformed
 
     private void btnAddToOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToOrderActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblMenu.getSelectedRow();
-
-        if (selectedRow >= 0){
+        if (selectedRow<0){
+            JOptionPane.showMessageDialog(null,"Please select an item to add", "Warning", JOptionPane.WARNING_MESSAGE); 
+        }
+        else {
             Menu selectedMenuItem = (Menu) tblMenu.getValueAt(selectedRow, 0);
             Order item = new Order (selectedMenuItem.getName(), selectedMenuItem.getPrice());
             this.orderList.add(item);
-            
             populateOrderTable();
-        } else {
-           JOptionPane.showMessageDialog(null,"Please select an item to add", "Warning", JOptionPane.WARNING_MESSAGE); 
-        }
+        } 
     }//GEN-LAST:event_btnAddToOrderActionPerformed
 
     private void BtnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPlaceOrderActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRestaurant.getSelectedRow();
         Restaurant selectedRestaurant = null;
-
         if (selectedRow >= 0){
             selectedRestaurant = (Restaurant) tblRestaurant.getValueAt(selectedRow, 0);
         } else {
@@ -342,15 +339,14 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     private void btnRemoveItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveItemActionPerformed
         // TODO add your handling code here:
            int selectedRow = tblOrder.getSelectedRow();
-
-        if (selectedRow >= 0){
+        if (selectedRow<0){
+            JOptionPane.showMessageDialog(null,"Please select item to add", "Warning", JOptionPane.WARNING_MESSAGE); 
+        }
+        else {
             Order cartItem = (Order) tblOrder.getValueAt(selectedRow, 0);
-            
             this.orderList.remove(cartItem);
             populateOrderTable();
-        } else {
-           JOptionPane.showMessageDialog(null,"Please select a Menu item to add", "Warning", JOptionPane.WARNING_MESSAGE); 
-        }
+        } 
     }//GEN-LAST:event_btnRemoveItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -19,7 +19,6 @@ import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
  * @author snehaswaroop
  */
 public class ManageMenuPanel extends javax.swing.JPanel {
-    
     JPanel userProcessContainer;
     Restaurant restaurant;
 

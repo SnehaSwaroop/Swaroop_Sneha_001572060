@@ -24,10 +24,10 @@ public class ManageOrderPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageOrderPanel
      */
-    public ManageOrderPanel(JPanel upc, Restaurant r) {
+    public ManageOrderPanel(JPanel userprocesscontainer, Restaurant restaurant) {
         initComponents();
-        this.userProcessContainer = upc;
-        this.restaurant = r;
+        this.userProcessContainer = userprocesscontainer;
+        this.restaurant = restaurant;
         populateOrdersTable();
         populateDeliveryMenTable();
     }
@@ -35,8 +35,6 @@ public class ManageOrderPanel extends javax.swing.JPanel {
     public void populateOrdersTable() {
          DefaultTableModel model = (DefaultTableModel)tblOrders.getModel();
         model.setRowCount(0);
-        //int count = 1;
-        //Supplier supplier = (Supplier)suppComboBox1.getSelectedItem();
         if (restaurant.getWorkQueue().getWorkRequestList() != null) {
             for(WorkRequest request : restaurant.getWorkQueue().getWorkRequestList()) {
                 Object row[] = new Object[5];
@@ -46,27 +44,21 @@ public class ManageOrderPanel extends javax.swing.JPanel {
                 row[3] = request.getRequestDate();
                 row[4] = request.getComments();
                 model.addRow(row); 
-                //count++;
             }       
         }
-       
     }
     
     public void populateDeliveryMenTable() {
          DefaultTableModel model = (DefaultTableModel)tblMan.getModel();
         model.setRowCount(0);
-        //int count = 1;
-        //Supplier supplier = (Supplier)suppComboBox1.getSelectedItem();
         if (restaurant.getDeliveryManList() != null) {
             for(DeliveryMan man : restaurant.getDeliveryManList()) {
                 Object row[] = new Object[2];
                 row[0] = man;
                 row[1] = man.getPhoneNumber();
                 model.addRow(row); 
-                //count++;
             }       
         }
-       
     }
 
     /**
@@ -186,14 +178,13 @@ public class ManageOrderPanel extends javax.swing.JPanel {
             WorkRequest selectedOrder = (WorkRequest) tblOrders.getValueAt(selectedOrderRow, 0);
             DeliveryMan selectedDeliveryMan = (DeliveryMan) tblMan.getValueAt(selectedDeliveryManRow, 0);
             
-             if (selectedOrder.getStatus().equals("Delivered")) {
-                JOptionPane.showMessageDialog(null,"Cannot Assign delivered order to a delivery man", "Warning", JOptionPane.WARNING_MESSAGE);
+             if (selectedOrder.getStatus().equalsIgnoreCase("Delivered")) {
+                JOptionPane.showMessageDialog(null,"Order has already been delivered", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                //Assigning Delivery Man now
-                selectedOrder.setReceiver(selectedDeliveryMan.getUserAccount());
+                selectedOrder.setReceiver(selectedDeliveryMan.getUserAccount());            //Assigning Delivery Man
 
                 JOptionPane.showMessageDialog(null, "Assigned order");
-                populateOrdersTable(); //Repopulate the orders again
+                populateOrdersTable(); 
              }
         } else {
            JOptionPane.showMessageDialog(null,"Please select an Order and a Delivery Man", "Warning", JOptionPane.WARNING_MESSAGE); 

@@ -24,7 +24,7 @@ import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private EcoSystem business;
+    private EcoSystem ecosystem;
     private UserAccount userAccount;
     Restaurant restaurant;
     
@@ -32,12 +32,11 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, EcoSystem business, Restaurant restaurant) {
+    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, EcoSystem ecoSystem, Restaurant restaurant) {
         initComponents();
-        
         this.userProcessContainer = userProcessContainer;
         this.userAccount = useraccount;
-        this.business = business;
+        this.ecosystem = ecoSystem;
         this.restaurant = restaurant;
         populateTable();
     }
@@ -127,8 +126,8 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRowIndex = tblWorkRequest.getSelectedRow();
          if(selectedRowIndex >=0 ) {
             WorkRequest selectedOrder = (WorkRequest) tblWorkRequest.getValueAt(selectedRowIndex, 0);
-            if(selectedOrder.getStatus().equals("Delivered")) {
-                 JOptionPane.showMessageDialog(null,"Order already completed", "Warning", JOptionPane.WARNING_MESSAGE); 
+            if(selectedOrder.getStatus().equalsIgnoreCase("Delivered")) {
+                 JOptionPane.showMessageDialog(null,"Order already delivered", "Warning", JOptionPane.WARNING_MESSAGE); 
             }
             else {
                 ProcessWorkRequestJPanel panel = new ProcessWorkRequestJPanel(userProcessContainer, selectedOrder);
@@ -137,7 +136,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 layout.next(userProcessContainer);
             }
          }else {
-           JOptionPane.showMessageDialog(null,"Please select an Order to proceed", "Warning", JOptionPane.WARNING_MESSAGE); 
+           JOptionPane.showMessageDialog(null,"Please select an order to proceed", "Warning", JOptionPane.WARNING_MESSAGE); 
         } 
     }//GEN-LAST:event_processJButtonActionPerformed
 

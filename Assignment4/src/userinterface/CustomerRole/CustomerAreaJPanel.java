@@ -29,20 +29,20 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, EcoSystem ecosystem, Customer customer) {
+    public CustomerAreaJPanel(JPanel userprocesscontainer, UserAccount useraccount, EcoSystem ecoSystem, Customer cust) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userprocesscontainer;
         this.userAccount = useraccount;
-        this.ecosystem = ecosystem;
-        this.customer = customer;
+        this.ecosystem = ecoSystem;
+        this.customer = cust;
         valueLabel.setText(this.ecosystem.getName());
         populateRequestTable();
     }
     
     public void populateRequestTable(){
         
-        DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
-        model.setRowCount(0);
+        DefaultTableModel table = (DefaultTableModel)workRequestJTable.getModel();
+        table.setRowCount(0);
         ArrayList<WorkRequest> requestTable = new ArrayList<WorkRequest>();
         for (Restaurant restaurant : ecosystem.getRestaurantDirectory().getRestaurantList()) {
             if(restaurant.getWorkQueue() != null && restaurant.getWorkQueue().getWorkRequestList() != null) {
@@ -61,7 +61,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 row[2] = request.getStatus();
                 row[3] = request.getRequestDate();
                 row[4] = request.getComments();
-                model.addRow(row); 
+                table.addRow(row); 
             }       
         }
     }

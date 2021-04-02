@@ -18,11 +18,10 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     Restaurant restaurant;
     
     /** Creates new form AdminWorkAreaJPanel */
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, Restaurant r) {
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, Restaurant restaurant) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.restaurant = r;
-      
+        this.restaurant = restaurant;
         valueLabel.setText(this.restaurant.getName());
     }
     
